@@ -1,0 +1,23 @@
+{% if content_for_header contains 'dhseo_install_check' %}
+
+<!-- DHSEO START -->
+
+{%- comment -%}dhseo page404 start{%- endcomment -%}
+{% capture dh %}{% include 'dhseo-redirect' %}{% endcapture %}{% unless dh contains 'Liquid error' %}{% include 'dhseo-redirect' %}{% endunless %}
+{%- comment -%}dhseo page404 end{%- endcomment -%}
+
+{%- comment -%}dhseo meta keywords start{%- endcomment -%}
+{% capture dh %}{% include 'dhseo-meta-keywords' %}{% endcapture %}{% unless dh contains 'Liquid error' %}{% include 'dhseo-meta-keywords' %}{% endunless %}
+{%- comment -%}dhseo meta keywords end{%- endcomment -%}
+
+{%- comment -%}dhseo meta keywords start{%- endcomment -%}
+{% capture dh %}{% include 'dhseo-meta-title' %}{% endcapture %}{% unless dh contains 'Liquid error' %}{% include 'dhseo-meta-title' %}{% endunless %}
+{%- comment -%}dhseo meta keywords end{%- endcomment -%}
+
+{%- comment -%}dhseo meta keywords start{%- endcomment -%}
+{% capture dh %}{% include 'dhseo-meta-description' %}{% endcapture %}{% unless dh contains 'Liquid error' %}{% include 'dhseo-meta-description' %}{% endunless %}
+{%- comment -%}dhseo meta keywords end{%- endcomment -%}
+
+<!-- DHSEO END -->
+
+{% endif %}

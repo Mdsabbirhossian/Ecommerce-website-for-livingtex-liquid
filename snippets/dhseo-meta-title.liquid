@@ -1,0 +1,19 @@
+{% if request.page_type == 'product' %}
+{%- capture dhseo_meta_title -%}
+{{ product.title }} {{ product.type }} -{{ shop.name }} 
+{%- endcapture -%}
+{% endif %}
+{% if request.page_type == 'article' %}
+{%- capture dhseo_meta_title -%}
+-{{ shop.name }} {{ article.title }} 
+{%- endcapture -%}
+{% endif %}
+{% if request.page_type == 'page' %}
+{%- capture dhseo_meta_title -%}
+{{ page.title }} -{{ shop.name }} 
+{%- endcapture -%}
+{% endif %}
+{% if dhseo_meta_title %}
+{%- assign dhseo_title = dhseo_meta_title | strip_html | strip -%}
+<title>{{ dhseo_title | strip }}</title>
+{% endif %}

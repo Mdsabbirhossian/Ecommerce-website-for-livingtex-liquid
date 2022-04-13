@@ -1,0 +1,13 @@
+{% if request.page_type == 'product' %}
+{%- capture dhseo_meta_keyword -%}{{ product.title }} {{shop.name | escape | downcase}}{%- endcapture -%}
+{% endif %}
+
+{% if request.page_type == 'article' %}
+{%- capture dhseo_meta_keyword -%}{{ article.title }} {{shop.name | escape | downcase}}{%- endcapture -%}
+{% endif %}
+
+{% if dhseo_meta_keyword %}
+{%- assign smart_seo_keyword = dhseo_meta_keyword | strip_html | strip -%}
+{% assign keyword = smart_seo_keyword | strip | downcase  %}
+<meta name="keywords" content="{{ keyword | split: ' ' | uniq | join: ' ' }}"/>
+{% endif %}

@@ -1,0 +1,766 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400|GFS+Didot:400&display=swap"><link rel="stylesheet" href="https://cdn.pagefly.io/pagefly/2.17.8/css/main-style.css?t=20210317140306"><link rel="stylesheet" href="{{ 'pagefly.bea285f3.css' | asset_url }}">
+		  <script>
+	window.__pageflyProducts = window.__pageflyProducts || {};
+	window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+	</script>{% if collection_190491426949 == null %}{%- assign collection_190491426949 = collections['cushion-cover_16x16'] -%}{% endif %} {% if collection_178435195013 == null %}{%- assign collection_178435195013 = collections['cushion-cover'] -%}{% endif %} {% if collection_189659742341 == null %}{%- assign collection_189659742341 = collections['socks-1'] -%}{% endif %} {% if collection_178705760389 == null %}{%- assign collection_178705760389 = collections['baby-swaddle-katha'] -%}{% endif %} {% if collection_178434965637 == null %}{%- assign collection_178434965637 = collections['bedsheet'] -%}{% endif %} {% if collection_178692489349 == null %}{%- assign collection_178692489349 = collections['baby-romper-body-suit'] -%}{% endif %} {% if collection_178705236101 == null %}{%- assign collection_178705236101 = collections['t-shirt'] -%}{% endif %} {% if collection_179565920389 == null %}{%- assign collection_179565920389 = collections['table-cloth'] -%}{% endif %} {% if collection_178694979717 == null %}{%- assign collection_178694979717 = collections['innerwear'] -%}{% endif %} {% if collection_178435031173 == null %}{%- assign collection_178435031173 = collections['towel'] -%}{% endif %} {% if collection_178693537925 == null %}{%- assign collection_178693537925 = collections['underwear'] -%}{% endif %} {% if collection_189774037125 == null %}{%- assign collection_189774037125 = collections['bath-mat'] -%}{% endif %} {% if collection_191802245253 == null %}{%- assign collection_191802245253 = collections['cloth-bags'] -%}{% endif %} {% if collection_193396113541 == null %}{%- assign collection_193396113541 = collections['curtain-1'] -%}{% endif %} {% if collection_179162349701 == null %}{%- assign collection_179162349701 = collections['dining-kitchen-essential'] -%}{% endif %}<script>
+	window.__pageflyCollections = window.__pageflyCollections || {};
+	window.__pageflyCollections["190491426949"] = {{collection_190491426949 | json }};window.__pageflyCollections["178435195013"] = {{collection_178435195013 | json }};window.__pageflyCollections["189659742341"] = {{collection_189659742341 | json }};window.__pageflyCollections["178705760389"] = {{collection_178705760389 | json }};window.__pageflyCollections["178434965637"] = {{collection_178434965637 | json }};window.__pageflyCollections["178692489349"] = {{collection_178692489349 | json }};window.__pageflyCollections["178705236101"] = {{collection_178705236101 | json }};window.__pageflyCollections["179565920389"] = {{collection_179565920389 | json }};window.__pageflyCollections["178694979717"] = {{collection_178694979717 | json }};window.__pageflyCollections["178435031173"] = {{collection_178435031173 | json }};window.__pageflyCollections["178693537925"] = {{collection_178693537925 | json }};window.__pageflyCollections["189774037125"] = {{collection_189774037125 | json }};window.__pageflyCollections["191802245253"] = {{collection_191802245253 | json }};window.__pageflyCollections["193396113541"] = {{collection_193396113541 | json }};window.__pageflyCollections["179162349701"] = {{collection_179162349701 | json }};
+	</script><div class="__pf" id="__pf"><div data-pf-type="Body" class="sc-pRgDJ fzXWJx pf-2a521611"><div data-pf-type="Layout" class="pf-4a4b2a52"><div data-pf-type="CollectionPreview" class="sc-qYGzz cjQBWh pf-1dbe87a2">{% paginate collection.products by 20 %}
+
+<div class="page-width">
+
+  <header class="grid medium-up--grid--table section-header small--text-center">
+    <div class="grid__item medium-up--one-half section-header__item">
+      <h1 class="section-header__title">
+        {{ collection.title }}
+        {% if current_tags %}
+          &ndash; {% assign title_tags = current_tags | join: ', ' %}
+          {{ title_tags }}
+        {% endif %}
+      </h1>
+      {% if collection.description != blank %}
+        <div class="section-header__subtext rte">
+          {{ collection.description }}
+        </div>
+      {% endif %}
+    </div>
+    <div class="grid__item medium-up--one-half medium-up--text-right section-header__item">
+      {% section 'collection-filters' %}
+    </div>
+  </header>
+
+  <div class="grid grid--no-gutters grid--uniform">
+
+    {% for product in collection.products %}
+      <div class="grid__item small--one-half medium-up--one-fifth">
+        {% include 'product-card', product: product %}
+      </div>
+    {% else %}
+      {% comment %}
+        Add default products to help with onboarding for collections/all only.
+
+        The onboarding styles and products are only loaded if the
+        store has no products.
+      {% endcomment %}
+      {% if shop.products_count == 0 %}
+        <div class="grid__item">
+          <div class="grid grid--no-gutters grid--uniform">
+            {% assign collection_index = 1 %}
+            {% for i in (1..10) %}
+              {% case i %}
+                {% when 7 %}
+                  {% assign collection_index = 1 %}
+                {% when 8 %}
+                  {% assign collection_index = 2 %}
+                {% when 9 %}
+                  {% assign collection_index = 3 %}
+                {% when 10 %}
+                  {% assign collection_index = 4 %}
+              {% endcase %}
+              <div class="grid__item small--one-half medium-up--one-fifth">
+                <a href="/admin/products" class="product-card">
+                  <div class="product-card__image-container">
+                    <div class="product-card__image-wrapper">
+                      <div class="product-card__image">
+                        {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                        {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="product-card__info">
+                    <div class="product-card__name">{{ 'homepage.onboarding.product_title' | t }}</div>
+                    <div class="product-card__price">
+                      $19.99
+                    </div>
+                  </div>
+                  <div class="product-card__overlay">
+                    {% assign view_string_length = 'products.product.view' | t | size %}
+                    <span class="btn product-card__overlay-btn {% if view_string_length > 8 %} btn--narrow{% endif %}">{{ 'products.product.view' | t }}</span>
+                  </div>
+                </a>
+              </div>
+              {% assign collection_index = collection_index | plus: 1 %}
+            {% endfor %}
+          </div>
+        </div>
+      {% else %}
+        {% comment %}
+          If collection exists but is empty, display message
+        {% endcomment %}
+        <div class="grid__item small--text-center">
+          <p>{{ 'collections.general.no_matches' | t }}</p>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {% if paginate.pages > 1 %}
+    <div class="pagination">
+      {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
+    </div>
+  {% endif %}
+
+</div>
+
+{% endpaginate %}
+</div><div data-container="true" class="sc-pZopv bjKdkd pf-09d1c0da" data-pf-type="Section"><div class="sc-pQQXS iWCqut" style="max-width: 1170px;"><div class="sc-qPjXN eYzxUD pf-cefe09d1 pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-c7a8cefe" data-pf-type="Column"><h2 data-animation="fadeInDown" data-pf-type="Heading" class="sc-oTLFK lcHmGL pf-15fdf0d5"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-1f5a15fd">Livingtex&nbsp;</span></h2><p class="sc-oUAoT HrWqm pf-3c9ac7a8" data-animation="fadeInUp" data-pf-type="Paragraph"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-b80e3c9a">Get up to 5% Discount by web checkout use "Checkout5%" coupon code.</span></p></div></div></div></div></div><div data-container="true" class="sc-pZopv bjKdkd pf-5c261623" data-pf-type="Section"><div class="sc-pQQXS iWCqut" style="max-width: 1170px;"><div class="sc-qPjXN eYzxUD pf-d13e5c26 pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-aeaad13e" data-pf-type="Column"><div class="sc-oUAMm bPnfgz pf-9710aeaa pf-r-dg pf-r-dg-lg--6 pf-r-dg-md--6 pf-r-dg-sm--3 pf-r-dg-xs--2" data-pf-type="ProductList" style="--pf-s-lg:30px; --pf-s-md:30px; --pf-s-sm:30px; --pf-s-xs:15px;">{% assign collection_190491426949 = collections['cushion-cover_16x16'] %}{% assign defaultProduct = product %}{% paginate collection_190491426949.products by 6 %}{% for product in collection_190491426949.products %}<div><div data-product-id="{{ product.id }}" data-pf-type="ProductBox" class="sc-pjGtN lgnAIx pf-f1219710"> {% if product != null %}{% form 'product', product, data-productid: product.id, class: "pf-product-form pf-form-43f12197" %}<div data-product-id="{{ product.id }}" data-default-source="featured" data-pf-type="ProductImage" class="sc-pzLIQ SfOJX pf-bc7b4d74">{% assign img_size = product.images.size %}<div class="sc-qZusK vHMOL">{% if img_size > 1 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<picture data-href="{{ product.url }}" height="200px" spacing="10px" data-pf-type="MasterImage" data-magnifier="true" mode="view" class="sc-pQERe eAxLDs" style="height: auto;"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-img-id="{{ product.featured_image.id }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"></picture>{% if img_size > 1 %}<div spacing="10px" class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div><div data-pf-type="ProductGallery" data-product-id="{{ product.id }}" height="200px" spacing="10px" class="sc-pHHLp cIJQGw">{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<div class="pf-p-image-small-container"><div class="pf-small-img-roll" style="padding-top: 5px; margin: -5px;">	{% for image in product.images %} <div class="sc-psbuI efwYHr" style="margin: 0px 5px;"><img src="{{ image.src | img_url: 'master' }}" class="pf-show-small-img" alt="{{ image.alt | escape }}" data-img-id="{{ image.id }}"></div>{% endfor %} </div></div>{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div></div><h2 data-product-type="title" data-product-id="{{ product.id }}" data-href="{{ product.url }}" data-pf-type="ProductText" class="sc-ptBBy kpuSv pf-4d74f2da">{{ product.title }}</h2><div class="sc-qPjXN eYzxUD pf-9f2fb2a1 pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-977a9f2f" data-pf-type="Column"><a href="https://livingtexglobal.com/collections/cushion-cover_16x16" target="_blank" data-pf-type="Button" class="sc-pZdvY kuwSuz pf-aace977a"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-bd8daace">Shop now</span></a></div></div></div><div data-pf-type="Block" class="sc-oUbqx bgMQOP pf-2343f121"><div data-product-type="price" data-product-id="{{ product.id }}" data-pf-type="ProductText" class="sc-pcLzI gJGZti pf-f2da758d">{{ product.variants[0].price | money }}</div></div>{% endform %}{% endif %}</div><script>
+									window.__pageflyProducts = window.__pageflyProducts || {};
+									window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+								</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div></div></div></div></div></div><div data-container="true" class="sc-pZopv bjKdkd pf-36d2298e" data-pf-type="Section"><div class="sc-pQQXS iWCqut" style="max-width: 1170px;"><div class="sc-qPjXN eYzxUD pf-a92a36d2 pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-66e0a92a" data-pf-type="Column"><div class="sc-oUAMm bPnfgz pf-5da466e0 pf-r-dg pf-r-dg-lg--6 pf-r-dg-md--6 pf-r-dg-sm--3 pf-r-dg-xs--2" data-pf-type="ProductList" style="--pf-s-lg:30px; --pf-s-md:30px; --pf-s-sm:30px; --pf-s-xs:15px;">{% assign collection_178435195013 = collections['cushion-cover'] %}{% assign defaultProduct = product %}{% paginate collection_178435195013.products by 6 %}{% for product in collection_178435195013.products %}<div><div data-product-id="{{ product.id }}" data-pf-type="ProductBox" class="sc-pjGtN lgnAIx pf-9a245da4"> {% if product != null %}{% form 'product', product, data-productid: product.id, class: "pf-product-form pf-form-8d9a245d" %}<div data-product-id="{{ product.id }}" data-default-source="featured" data-pf-type="ProductImage" class="sc-pzLIQ SfOJX pf-31ee52d9">{% assign img_size = product.images.size %}<div class="sc-qZusK vHMOL">{% if img_size > 1 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<picture data-href="{{ product.url }}" height="200px" spacing="10px" data-pf-type="MasterImage" data-magnifier="true" mode="view" class="sc-pQERe eAxLDs" style="height: auto;"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-img-id="{{ product.featured_image.id }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"></picture>{% if img_size > 1 %}<div spacing="10px" class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div><div data-pf-type="ProductGallery" data-product-id="{{ product.id }}" height="200px" spacing="10px" class="sc-pHHLp cIJQGw">{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<div class="pf-p-image-small-container"><div class="pf-small-img-roll" style="padding-top: 5px; margin: -5px;">	{% for image in product.images %} <div class="sc-psbuI efwYHr" style="margin: 0px 5px;"><img src="{{ image.src | img_url: 'master' }}" class="pf-show-small-img" alt="{{ image.alt | escape }}" data-img-id="{{ image.id }}"></div>{% endfor %} </div></div>{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div></div><h2 data-product-type="title" data-product-id="{{ product.id }}" data-href="{{ product.url }}" data-pf-type="ProductText" class="sc-ptBBy kpuSv pf-52d95e52">{{ product.title }}</h2><div class="sc-qPjXN eYzxUD pf-15823f4f pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-60761582" data-pf-type="Column"><a href="/collections/cushion-cover" target="_self" data-pf-type="Button" class="sc-pZdvY kuwSuz pf-b79d6076"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-aeb1b79d">shop now</span></a></div></div></div><div data-pf-type="Block" class="sc-oUbqx bgMQOP pf-968d9a24"><div data-product-type="price" data-product-id="{{ product.id }}" data-pf-type="ProductText" class="sc-pcLzI gJGZti pf-5e526812">{{ product.variants[0].price | money }}</div></div>{% endform %}{% endif %}</div><script>
+									window.__pageflyProducts = window.__pageflyProducts || {};
+									window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+								</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div></div></div></div></div></div><div data-container="true" class="sc-pZopv bjKdkd pf-516a4a4b" data-pf-type="Section"><div class="sc-pQQXS iWCqut" style="max-width: 1170px;"><div class="sc-qPjXN eYzxUD pf-aad2516a pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-dc39aad2" data-pf-type="Column"><div class="sc-oUAMm bPnfgz pf-431bdc39 pf-r-dg pf-r-dg-lg--6 pf-r-dg-md--6 pf-r-dg-sm--3 pf-r-dg-xs--2" data-pf-type="ProductList" style="--pf-s-lg:72px; --pf-s-md:72px; --pf-s-sm:72px; --pf-s-xs:15px;">{% assign collection_189659742341 = collections['socks-1'] %}{% assign defaultProduct = product %}{% paginate collection_189659742341.products by 6 %}{% for product in collection_189659742341.products %}<div><div data-product-id="{{ product.id }}" data-pf-type="ProductBox" class="sc-pjGtN lgnAIx pf-0223431b"> {% if product != null %}{% form 'product', product, data-productid: product.id, class: "pf-product-form pf-form-e0022343" %}<div data-product-id="{{ product.id }}" data-default-source="featured" data-pf-type="ProductImage" class="sc-pzLIQ SfOJX pf-0adcc1ba">{% assign img_size = product.images.size %}<div class="sc-qZusK vHMOL">{% if img_size > 1 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<picture data-href="{{ product.url }}" height="200px" spacing="10px" data-pf-type="MasterImage" data-magnifier="true" mode="view" class="sc-pQERe eAxLDs" style="height: auto;"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-img-id="{{ product.featured_image.id }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"></picture>{% if img_size > 1 %}<div spacing="10px" class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div><div data-pf-type="ProductGallery" data-product-id="{{ product.id }}" height="200px" spacing="10px" class="sc-pHHLp cdHUxN">{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<div class="pf-p-image-small-container"><div class="pf-small-img-roll" style="padding-top: 5px; margin: -5px;">	{% for image in product.images %} <div class="sc-psbuI efwYHr" style="margin: 0px 5px;"><img src="{{ image.src | img_url: 'master' }}" class="pf-show-small-img" alt="{{ image.alt | escape }}" data-img-id="{{ image.id }}"></div>{% endfor %} </div></div>{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div></div><div class="sc-qPjXN eYzxUD pf-5b46a889 pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-bf095b46" data-pf-type="Column"><a data-pf-type="Button" class="sc-pZdvY kuwSuz pf-3d6fbf09"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-66893d6f">Shop now</span></a></div></div></div><h2 data-product-type="title" data-product-id="{{ product.id }}" data-href="{{ product.url }}" data-pf-type="ProductText" class="sc-ptBBy kpuSv pf-c1ba05ce">{{ product.title }}</h2><div data-pf-type="Block" class="sc-oUbqx bgMQOP pf-7ae00223"><div data-product-type="price" data-product-id="{{ product.id }}" data-pf-type="ProductText" class="sc-pcLzI gJGZti pf-05ce8b95">{{ product.variants[0].price | money }}</div></div>{% endform %}{% endif %}</div><script>
+									window.__pageflyProducts = window.__pageflyProducts || {};
+									window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+								</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div><div class="sc-oUAMm bPnfgz pf-ee1c77ee pf-r-dg pf-r-dg-lg--6 pf-r-dg-md--6 pf-r-dg-sm--3 pf-r-dg-xs--2" data-pf-type="ProductList" style="--pf-s-lg:72px; --pf-s-md:72px; --pf-s-sm:72px; --pf-s-xs:15px;">{% assign collection_178705760389 = collections['baby-swaddle-katha'] %}{% assign defaultProduct = product %}{% paginate collection_178705760389.products by 6 %}{% for product in collection_178705760389.products %}<div><div data-product-id="{{ product.id }}" data-pf-type="ProductBox" class="sc-pjGtN lgnAIx pf-6a6aee1c"> {% if product != null %}{% form 'product', product, data-productid: product.id, class: "pf-product-form pf-form-8e6a6aee" %}<div data-product-id="{{ product.id }}" data-default-source="featured" data-pf-type="ProductImage" class="sc-pzLIQ SfOJX pf-575e6aaa">{% assign img_size = product.images.size %}<div class="sc-qZusK vHMOL">{% if img_size > 1 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<picture data-href="{{ product.url }}" height="200px" spacing="10px" data-pf-type="MasterImage" data-magnifier="true" mode="view" class="sc-pQERe eAxLDs" style="height: auto;"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-img-id="{{ product.featured_image.id }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"></picture>{% if img_size > 1 %}<div spacing="10px" class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div><div data-pf-type="ProductGallery" data-product-id="{{ product.id }}" height="200px" spacing="10px" class="sc-pHHLp cdHUxN">{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<div class="pf-p-image-small-container"><div class="pf-small-img-roll" style="padding-top: 5px; margin: -5px;">	{% for image in product.images %} <div class="sc-psbuI efwYHr" style="margin: 0px 5px;"><img src="{{ image.src | img_url: 'master' }}" class="pf-show-small-img" alt="{{ image.alt | escape }}" data-img-id="{{ image.id }}"></div>{% endfor %} </div></div>{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div></div><div class="sc-qPjXN eYzxUD pf-de8e6a6a pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-b77dde8e" data-pf-type="Column"><a data-pf-type="Button" class="sc-pZdvY kuwSuz pf-f8937663"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-6d11f6d0">Shop now</span></a></div></div></div><h2 data-product-type="title" data-product-id="{{ product.id }}" data-href="{{ product.url }}" data-pf-type="ProductText" class="sc-ptBBy kpuSv pf-f6d08e26">{{ product.title }}</h2><div data-pf-type="Block" class="sc-oUbqx bgMQOP pf-7663b77d"><div data-product-type="price" data-product-id="{{ product.id }}" data-pf-type="ProductText" class="sc-pcLzI gJGZti pf-8e26f893">{{ product.variants[0].price | money }}</div></div>{% endform %}{% endif %}</div><script>
+									window.__pageflyProducts = window.__pageflyProducts || {};
+									window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+								</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div><div class="sc-oUAMm bPnfgz pf-f4c7575e pf-r-dg pf-r-dg-lg--6 pf-r-dg-md--6 pf-r-dg-sm--3 pf-r-dg-xs--2" data-pf-type="ProductList" style="--pf-s-lg:72px; --pf-s-md:72px; --pf-s-sm:72px; --pf-s-xs:15px;">{% assign collection_178692489349 = collections['baby-romper-body-suit'] %}{% assign defaultProduct = product %}{% paginate collection_178692489349.products by 6 %}{% for product in collection_178692489349.products %}<div><div data-product-id="{{ product.id }}" data-pf-type="ProductBox" class="sc-pjGtN lgnAIx pf-2d8af4c7"> {% if product != null %}{% form 'product', product, data-productid: product.id, class: "pf-product-form pf-form-fd2d8af4" %}<div data-product-id="{{ product.id }}" data-default-source="featured" data-pf-type="ProductImage" class="sc-pzLIQ SfOJX pf-90045723">{% assign img_size = product.images.size %}<div class="sc-qZusK vHMOL">{% if img_size > 1 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<picture data-href="{{ product.url }}" height="200px" spacing="10px" data-pf-type="MasterImage" data-magnifier="true" mode="view" class="sc-pQERe eAxLDs" style="height: auto;"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-img-id="{{ product.featured_image.id }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"></picture>{% if img_size > 1 %}<div spacing="10px" class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div><div data-pf-type="ProductGallery" data-product-id="{{ product.id }}" height="200px" spacing="10px" class="sc-pHHLp cdHUxN">{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<div class="pf-p-image-small-container"><div class="pf-small-img-roll" style="padding-top: 5px; margin: -5px;">	{% for image in product.images %} <div class="sc-psbuI efwYHr" style="margin: 0px 5px;"><img src="{{ image.src | img_url: 'master' }}" class="pf-show-small-img" alt="{{ image.alt | escape }}" data-img-id="{{ image.id }}"></div>{% endfor %} </div></div>{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div></div><div class="sc-qPjXN eYzxUD pf-14fd2d8a pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-757314fd" data-pf-type="Column"><a data-pf-type="Button" class="sc-pZdvY kuwSuz pf-a3d7ea75"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-67205042">Shop now</span></a></div></div></div><h2 data-product-type="title" data-product-id="{{ product.id }}" data-href="{{ product.url }}" data-pf-type="ProductText" class="sc-ptBBy kpuSv pf-5042ec32">{{ product.title }}</h2><div data-pf-type="Block" class="sc-oUbqx bgMQOP pf-ea757573"><div data-product-type="price" data-product-id="{{ product.id }}" data-pf-type="ProductText" class="sc-pcLzI gJGZti pf-ec32a3d7">{{ product.variants[0].price | money }}</div></div>{% endform %}{% endif %}</div><script>
+									window.__pageflyProducts = window.__pageflyProducts || {};
+									window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+								</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div><div class="sc-oUAMm bPnfgz pf-1e489004 pf-r-dg pf-r-dg-lg--6 pf-r-dg-md--6 pf-r-dg-sm--3 pf-r-dg-xs--2" data-pf-type="ProductList" style="--pf-s-lg:72px; --pf-s-md:72px; --pf-s-sm:72px; --pf-s-xs:15px;">{% assign collection_179565920389 = collections['table-cloth'] %}{% assign defaultProduct = product %}{% paginate collection_179565920389.products by 6 %}{% for product in collection_179565920389.products %}<div><div data-product-id="{{ product.id }}" data-pf-type="ProductBox" class="sc-pjGtN lgnAIx pf-0fb91e48"> {% if product != null %}{% form 'product', product, data-productid: product.id, class: "pf-product-form pf-form-6d0fb91e" %}<div data-product-id="{{ product.id }}" data-default-source="variant" data-pf-type="ProductImage" class="sc-pzLIQ SfOJX pf-80c03613">{% assign img_size = product.images.size %}<div class="sc-qZusK vHMOL">{% if img_size > 1 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<picture data-href="{{ product.url }}" height="200px" spacing="10px" data-pf-type="MasterImage" data-magnifier="true" mode="view" class="sc-pQERe eAxLDs" style="height: auto;"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-img-id="{{ product.featured_image.id }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"></picture>{% if img_size > 1 %}<div spacing="10px" class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div><div data-pf-type="ProductGallery" data-product-id="{{ product.id }}" height="200px" spacing="10px" class="sc-pHHLp cdHUxN">{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<div class="pf-p-image-small-container"><div class="pf-small-img-roll" style="padding-top: 5px; margin: -5px;">	{% for image in product.images %} <div class="sc-psbuI efwYHr" style="margin: 0px 5px;"><img src="{{ image.src | img_url: 'master' }}" class="pf-show-small-img" alt="{{ image.alt | escape }}" data-img-id="{{ image.id }}"></div>{% endfor %} </div></div>{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div></div><div class="sc-qPjXN eYzxUD pf-9d6d0fb9 pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-84469d6d" data-pf-type="Column"><a data-pf-type="Button" class="sc-pZdvY kuwSuz pf-029d17bb"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-940d28ca">Shop now</span></a></div></div></div><h2 data-product-type="title" data-product-id="{{ product.id }}" data-href="{{ product.url }}" data-pf-type="ProductText" class="sc-ptBBy kpuSv pf-28caecf6">{{ product.title }}</h2><div data-pf-type="Block" class="sc-oUbqx bgMQOP pf-17bb8446"><div data-product-type="price" data-product-id="{{ product.id }}" data-pf-type="ProductText" class="sc-pcLzI gJGZti pf-ecf6029d">{{ product.variants[0].price | money }}</div></div>{% endform %}{% endif %}</div><script>
+									window.__pageflyProducts = window.__pageflyProducts || {};
+									window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+								</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div><div class="sc-oUAMm bPnfgz pf-986b80c0 pf-r-dg pf-r-dg-lg--6 pf-r-dg-md--6 pf-r-dg-sm--3 pf-r-dg-xs--2" data-pf-type="ProductList" style="--pf-s-lg:72px; --pf-s-md:72px; --pf-s-sm:72px; --pf-s-xs:15px;">{% assign collection_178694979717 = collections['innerwear'] %}{% assign defaultProduct = product %}{% paginate collection_178694979717.products by 6 %}{% for product in collection_178694979717.products %}<div><div data-product-id="{{ product.id }}" data-pf-type="ProductBox" class="sc-pjGtN lgnAIx pf-bab8986b"> {% if product != null %}{% form 'product', product, data-productid: product.id, class: "pf-product-form pf-form-fcbab898" %}<div data-product-id="{{ product.id }}" data-default-source="featured" data-pf-type="ProductImage" class="sc-pzLIQ SfOJX pf-a62fc830">{% assign img_size = product.images.size %}<div class="sc-qZusK vHMOL">{% if img_size > 1 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<picture data-href="{{ product.url }}" height="200px" spacing="10px" data-pf-type="MasterImage" data-magnifier="true" mode="view" class="sc-pQERe eAxLDs" style="height: auto;"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-img-id="{{ product.featured_image.id }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"></picture>{% if img_size > 1 %}<div spacing="10px" class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div><div data-pf-type="ProductGallery" data-product-id="{{ product.id }}" height="200px" spacing="10px" class="sc-pHHLp cdHUxN">{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<div class="pf-p-image-small-container"><div class="pf-small-img-roll" style="padding-top: 5px; margin: -5px;">	{% for image in product.images %} <div class="sc-psbuI efwYHr" style="margin: 0px 5px;"><img src="{{ image.src | img_url: 'master' }}" class="pf-show-small-img" alt="{{ image.alt | escape }}" data-img-id="{{ image.id }}"></div>{% endfor %} </div></div>{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div></div><div class="sc-qPjXN eYzxUD pf-bdfcbab8 pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-cae2bdfc" data-pf-type="Column"><a data-pf-type="Button" class="sc-pZdvY kuwSuz pf-0771070a"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-15611d3d">Shop now</span></a></div></div></div><h2 data-product-type="title" data-product-id="{{ product.id }}" data-href="{{ product.url }}" data-pf-type="ProductText" class="sc-ptBBy kpuSv pf-1d3d2ed2">{{ product.title }}</h2><div data-pf-type="Block" class="sc-oUbqx bgMQOP pf-070acae2"><div data-product-type="price" data-product-id="{{ product.id }}" data-pf-type="ProductText" class="sc-pcLzI gJGZti pf-2ed20771">{{ product.variants[0].price | money }}</div></div>{% endform %}{% endif %}</div><script>
+									window.__pageflyProducts = window.__pageflyProducts || {};
+									window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+								</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div><div class="sc-oUAMm bPnfgz pf-a5f0a62f pf-r-dg pf-r-dg-lg--6 pf-r-dg-md--6 pf-r-dg-sm--3 pf-r-dg-xs--2" data-pf-type="ProductList" style="--pf-s-lg:72px; --pf-s-md:72px; --pf-s-sm:72px; --pf-s-xs:15px;">{% assign collection_178435031173 = collections['towel'] %}{% assign defaultProduct = product %}{% paginate collection_178435031173.products by 6 %}{% for product in collection_178435031173.products %}<div><div data-product-id="{{ product.id }}" data-pf-type="ProductBox" class="sc-pjGtN lgnAIx pf-44f6a5f0"> {% if product != null %}{% form 'product', product, data-productid: product.id, class: "pf-product-form pf-form-3844f6a5" %}<div data-product-id="{{ product.id }}" data-default-source="featured" data-pf-type="ProductImage" class="sc-pzLIQ SfOJX pf-7be7b03b">{% assign img_size = product.images.size %}<div class="sc-qZusK vHMOL">{% if img_size > 1 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<picture data-href="{{ product.url }}" height="200px" spacing="10px" data-pf-type="MasterImage" data-magnifier="true" mode="view" class="sc-pQERe eAxLDs" style="height: auto;"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-img-id="{{ product.featured_image.id }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"></picture>{% if img_size > 1 %}<div spacing="10px" class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div><div data-pf-type="ProductGallery" data-product-id="{{ product.id }}" height="200px" spacing="10px" class="sc-pHHLp cdHUxN">{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<div class="pf-p-image-small-container"><div class="pf-small-img-roll" style="padding-top: 5px; margin: -5px;">	{% for image in product.images %} <div class="sc-psbuI efwYHr" style="margin: 0px 5px;"><img src="{{ image.src | img_url: 'master' }}" class="pf-show-small-img" alt="{{ image.alt | escape }}" data-img-id="{{ image.id }}"></div>{% endfor %} </div></div>{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div></div><div class="sc-qPjXN eYzxUD pf-f83844f6 pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-bdf6f838" data-pf-type="Column"><a data-pf-type="Button" class="sc-pZdvY kuwSuz pf-e9d82040"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-88b363f4">Shop now</span></a></div></div></div><h2 data-product-type="title" data-product-id="{{ product.id }}" data-href="{{ product.url }}" data-pf-type="ProductText" class="sc-ptBBy kpuSv pf-63f4e9c1">{{ product.title }}</h2><div data-pf-type="Block" class="sc-oUbqx bgMQOP pf-2040bdf6"><div data-product-type="price" data-product-id="{{ product.id }}" data-pf-type="ProductText" class="sc-pcLzI gJGZti pf-e9c1e9d8">{{ product.variants[0].price | money }}</div></div>{% endform %}{% endif %}</div><script>
+									window.__pageflyProducts = window.__pageflyProducts || {};
+									window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+								</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div><div class="sc-oUAMm bPnfgz pf-9c667be7 pf-r-dg pf-r-dg-lg--6 pf-r-dg-md--6 pf-r-dg-sm--3 pf-r-dg-xs--2" data-pf-type="ProductList" style="--pf-s-lg:72px; --pf-s-md:72px; --pf-s-sm:72px; --pf-s-xs:15px;">{% assign collection_178693537925 = collections['underwear'] %}{% assign defaultProduct = product %}{% paginate collection_178693537925.products by 6 %}{% for product in collection_178693537925.products %}<div><div data-product-id="{{ product.id }}" data-pf-type="ProductBox" class="sc-pjGtN lgnAIx pf-aa6b9c66"> {% if product != null %}{% form 'product', product, data-productid: product.id, class: "pf-product-form pf-form-dcaa6b9c" %}<div data-product-id="{{ product.id }}" data-default-source="featured" data-pf-type="ProductImage" class="sc-pzLIQ SfOJX pf-308a1d4e">{% assign img_size = product.images.size %}<div class="sc-qZusK vHMOL">{% if img_size > 1 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<picture data-href="{{ product.url }}" height="200px" spacing="10px" data-pf-type="MasterImage" data-magnifier="true" mode="view" class="sc-pQERe eAxLDs" style="height: auto;"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-img-id="{{ product.featured_image.id }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"></picture>{% if img_size > 1 %}<div spacing="10px" class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div><div data-pf-type="ProductGallery" data-product-id="{{ product.id }}" height="200px" spacing="10px" class="sc-pHHLp cdHUxN">{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<div class="pf-p-image-small-container"><div class="pf-small-img-roll" style="padding-top: 5px; margin: -5px;">	{% for image in product.images %} <div class="sc-psbuI efwYHr" style="margin: 0px 5px;"><img src="{{ image.src | img_url: 'master' }}" class="pf-show-small-img" alt="{{ image.alt | escape }}" data-img-id="{{ image.id }}"></div>{% endfor %} </div></div>{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div></div><div class="sc-qPjXN eYzxUD pf-00dcaa6b pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-afc500dc" data-pf-type="Column"><a data-pf-type="Button" class="sc-pZdvY kuwSuz pf-0b8e7b19"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-8011613b">Shop now</span></a></div></div></div><h2 data-product-type="title" data-product-id="{{ product.id }}" data-href="{{ product.url }}" data-pf-type="ProductText" class="sc-ptBBy kpuSv pf-613b64b5">{{ product.title }}</h2><div data-pf-type="Block" class="sc-oUbqx bgMQOP pf-7b19afc5"><div data-product-type="price" data-product-id="{{ product.id }}" data-pf-type="ProductText" class="sc-pcLzI gJGZti pf-64b50b8e">{{ product.variants[0].price | money }}</div></div>{% endform %}{% endif %}</div><script>
+									window.__pageflyProducts = window.__pageflyProducts || {};
+									window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+								</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div><div class="sc-oUAMm bPnfgz pf-3023308a pf-r-dg pf-r-dg-lg--6 pf-r-dg-md--6 pf-r-dg-sm--3 pf-r-dg-xs--2" data-pf-type="ProductList" style="--pf-s-lg:72px; --pf-s-md:72px; --pf-s-sm:72px; --pf-s-xs:15px;">{% assign collection_189774037125 = collections['bath-mat'] %}{% assign defaultProduct = product %}{% paginate collection_189774037125.products by 6 %}{% for product in collection_189774037125.products %}<div><div data-product-id="{{ product.id }}" data-pf-type="ProductBox" class="sc-pjGtN lgnAIx pf-0e1a3023"> {% if product != null %}{% form 'product', product, data-productid: product.id, class: "pf-product-form pf-form-670e1a30" %}<div data-product-id="{{ product.id }}" data-default-source="featured" data-pf-type="ProductImage" class="sc-pzLIQ SfOJX pf-8a1d7433">{% assign img_size = product.images.size %}<div class="sc-qZusK vHMOL">{% if img_size > 1 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<picture data-href="{{ product.url }}" height="200px" spacing="10px" data-pf-type="MasterImage" data-magnifier="true" mode="view" class="sc-pQERe eAxLDs" style="height: auto;"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-img-id="{{ product.featured_image.id }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"></picture>{% if img_size > 1 %}<div spacing="10px" class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div><div data-pf-type="ProductGallery" data-product-id="{{ product.id }}" height="200px" spacing="10px" class="sc-pHHLp cdHUxN">{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<div class="pf-p-image-small-container"><div class="pf-small-img-roll" style="padding-top: 5px; margin: -5px;">	{% for image in product.images %} <div class="sc-psbuI efwYHr" style="margin: 0px 5px;"><img src="{{ image.src | img_url: 'master' }}" class="pf-show-small-img" alt="{{ image.alt | escape }}" data-img-id="{{ image.id }}"></div>{% endfor %} </div></div>{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div></div><div class="sc-qPjXN eYzxUD pf-cd670e1a pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-72d4cd67" data-pf-type="Column"><a data-pf-type="Button" class="sc-pZdvY kuwSuz pf-9c02c501"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-8edfe719">Shop now</span></a></div></div></div><h2 data-product-type="title" data-product-id="{{ product.id }}" data-href="{{ product.url }}" data-pf-type="ProductText" class="sc-ptBBy kpuSv pf-e7196f52">{{ product.title }}</h2><div data-pf-type="Block" class="sc-oUbqx bgMQOP pf-c50172d4"><div data-product-type="price" data-product-id="{{ product.id }}" data-pf-type="ProductText" class="sc-pcLzI gJGZti pf-6f529c02">{{ product.variants[0].price | money }}</div></div>{% endform %}{% endif %}</div><script>
+									window.__pageflyProducts = window.__pageflyProducts || {};
+									window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+								</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div><div class="sc-oUAMm bPnfgz pf-47938a1d pf-r-dg pf-r-dg-lg--6 pf-r-dg-md--6 pf-r-dg-sm--3 pf-r-dg-xs--2" data-pf-type="ProductList" style="--pf-s-lg:72px; --pf-s-md:72px; --pf-s-sm:72px; --pf-s-xs:15px;">{% assign collection_191802245253 = collections['cloth-bags'] %}{% assign defaultProduct = product %}{% paginate collection_191802245253.products by 6 %}{% for product in collection_191802245253.products %}<div><div data-product-id="{{ product.id }}" data-pf-type="ProductBox" class="sc-pjGtN lgnAIx pf-446f4793"> {% if product != null %}{% form 'product', product, data-productid: product.id, class: "pf-product-form pf-form-1f446f47" %}<div data-product-id="{{ product.id }}" data-default-source="featured" data-pf-type="ProductImage" class="sc-pzLIQ SfOJX pf-7d965f60">{% assign img_size = product.images.size %}<div class="sc-qZusK vHMOL">{% if img_size > 1 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<picture data-href="{{ product.url }}" height="200px" spacing="10px" data-pf-type="MasterImage" data-magnifier="true" mode="view" class="sc-pQERe eAxLDs" style="height: auto;"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-img-id="{{ product.featured_image.id }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"></picture>{% if img_size > 1 %}<div spacing="10px" class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div><div data-pf-type="ProductGallery" data-product-id="{{ product.id }}" height="200px" spacing="10px" class="sc-pHHLp cdHUxN">{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<div class="pf-p-image-small-container"><div class="pf-small-img-roll" style="padding-top: 5px; margin: -5px;">	{% for image in product.images %} <div class="sc-psbuI efwYHr" style="margin: 0px 5px;"><img src="{{ image.src | img_url: 'master' }}" class="pf-show-small-img" alt="{{ image.alt | escape }}" data-img-id="{{ image.id }}"></div>{% endfor %} </div></div>{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div></div><div class="sc-qPjXN eYzxUD pf-6b1f446f pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-b66e6b1f" data-pf-type="Column"><a data-pf-type="Button" class="sc-pZdvY kuwSuz pf-b71cbd80"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-99ccd9f0">Shop now</span></a></div></div></div><h2 data-product-type="title" data-product-id="{{ product.id }}" data-href="{{ product.url }}" data-pf-type="ProductText" class="sc-ptBBy kpuSv pf-d9f04d4b">{{ product.title }}</h2><div data-pf-type="Block" class="sc-oUbqx bgMQOP pf-bd80b66e"><div data-product-type="price" data-product-id="{{ product.id }}" data-pf-type="ProductText" class="sc-pcLzI gJGZti pf-4d4bb71c">{{ product.variants[0].price | money }}</div></div>{% endform %}{% endif %}</div><script>
+									window.__pageflyProducts = window.__pageflyProducts || {};
+									window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+								</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div><div class="sc-oUAMm bPnfgz pf-1b7f7d96 pf-r-dg pf-r-dg-lg--6 pf-r-dg-md--6 pf-r-dg-sm--3 pf-r-dg-xs--2" data-pf-type="ProductList" style="--pf-s-lg:72px; --pf-s-md:72px; --pf-s-sm:72px; --pf-s-xs:15px;">{% assign collection_193396113541 = collections['curtain-1'] %}{% assign defaultProduct = product %}{% paginate collection_193396113541.products by 4 %}{% for product in collection_193396113541.products %}<div><script>
+									window.__pageflyProducts = window.__pageflyProducts || {};
+									window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+								</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div><div class="sc-oUAMm bPnfgz pf-6b37ab16 pf-r-dg pf-r-dg-lg--6 pf-r-dg-md--6 pf-r-dg-sm--3 pf-r-dg-xs--2" data-pf-type="ProductList" style="--pf-s-lg:72px; --pf-s-md:72px; --pf-s-sm:72px; --pf-s-xs:15px;">{% assign collection_179162349701 = collections['dining-kitchen-essential'] %}{% assign defaultProduct = product %}{% paginate collection_179162349701.products by 6 %}{% for product in collection_179162349701.products %}<div><div data-product-id="{{ product.id }}" data-pf-type="ProductBox" class="sc-pjGtN lgnAIx pf-5bb36b37"> {% if product != null %}{% form 'product', product, data-productid: product.id, class: "pf-product-form pf-form-c15bb36b" %}<div data-product-id="{{ product.id }}" data-default-source="featured" data-pf-type="ProductImage" class="sc-pzLIQ SfOJX pf-40892111">{% assign img_size = product.images.size %}<div class="sc-qZusK vHMOL">{% if img_size > 1 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<picture data-href="{{ product.url }}" height="200px" spacing="10px" data-pf-type="MasterImage" data-magnifier="true" mode="view" class="sc-pQERe eAxLDs" style="height: auto;"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-img-id="{{ product.featured_image.id }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"></picture>{% if img_size > 1 %}<div spacing="10px" class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div><div data-pf-type="ProductGallery" data-product-id="{{ product.id }}" height="200px" spacing="10px" class="sc-pHHLp cdHUxN">{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<div class="pf-p-image-small-container"><div class="pf-small-img-roll" style="padding-top: 5px; margin: -5px;">	{% for image in product.images %} <div class="sc-psbuI efwYHr" style="margin: 0px 5px;"><img src="{{ image.src | img_url: 'master' }}" class="pf-show-small-img" alt="{{ image.alt | escape }}" data-img-id="{{ image.id }}"></div>{% endfor %} </div></div>{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div></div><div class="sc-qPjXN eYzxUD pf-dbc15bb3 pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-d44edbc1" data-pf-type="Column"><a data-pf-type="Button" class="sc-pZdvY kuwSuz pf-ee2b30f2"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-be6146c4">Shop now</span></a></div></div></div><h2 data-product-type="title" data-product-id="{{ product.id }}" data-href="{{ product.url }}" data-pf-type="ProductText" class="sc-ptBBy kpuSv pf-46c48533">{{ product.title }}</h2><div data-pf-type="Block" class="sc-oUbqx bgMQOP pf-30f2d44e"><div data-product-type="price" data-product-id="{{ product.id }}" data-pf-type="ProductText" class="sc-pcLzI gJGZti pf-8533ee2b">{{ product.variants[0].price | money }}</div></div>{% endform %}{% endif %}</div><script>
+									window.__pageflyProducts = window.__pageflyProducts || {};
+									window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+								</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div><div class="sc-oUAMm bPnfgz pf-265c4089 pf-r-dg pf-r-dg-lg--6 pf-r-dg-md--6 pf-r-dg-sm--3 pf-r-dg-xs--2" data-pf-type="ProductList" style="--pf-s-lg:72px; --pf-s-md:72px; --pf-s-sm:72px; --pf-s-xs:15px;">{% assign collection_189659742341 = collections['socks-1'] %}{% assign defaultProduct = product %}{% paginate collection_189659742341.products by 6 %}{% for product in collection_189659742341.products %}<div><div data-product-id="{{ product.id }}" data-pf-type="ProductBox" class="sc-pjGtN lgnAIx pf-5d01265c"> {% if product != null %}{% form 'product', product, data-productid: product.id, class: "pf-product-form pf-form-f15d0126" %}<div data-product-id="{{ product.id }}" data-default-source="featured" data-pf-type="ProductImage" class="sc-pzLIQ SfOJX pf-822b6437">{% assign img_size = product.images.size %}<div class="sc-qZusK vHMOL">{% if img_size > 1 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<picture data-href="{{ product.url }}" height="200px" spacing="10px" data-pf-type="MasterImage" data-magnifier="true" mode="view" class="sc-pQERe eAxLDs" style="height: auto;"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-img-id="{{ product.featured_image.id }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"></picture>{% if img_size > 1 %}<div spacing="10px" class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div><div data-pf-type="ProductGallery" data-product-id="{{ product.id }}" height="200px" spacing="10px" class="sc-pHHLp cdHUxN">{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<div class="pf-p-image-small-container"><div class="pf-small-img-roll" style="padding-top: 5px; margin: -5px;">	{% for image in product.images %} <div class="sc-psbuI efwYHr" style="margin: 0px 5px;"><img src="{{ image.src | img_url: 'master' }}" class="pf-show-small-img" alt="{{ image.alt | escape }}" data-img-id="{{ image.id }}"></div>{% endfor %} </div></div>{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div></div><div class="sc-qPjXN eYzxUD pf-2ef15d01 pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-670c2ef1" data-pf-type="Column"><a data-pf-type="Button" class="sc-pZdvY kuwSuz pf-c0838eaa"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-a7c78336">Shop now</span></a></div></div></div><h2 data-product-type="title" data-product-id="{{ product.id }}" data-href="{{ product.url }}" data-pf-type="ProductText" class="sc-ptBBy kpuSv pf-8336100d">{{ product.title }}</h2><div data-pf-type="Block" class="sc-oUbqx bgMQOP pf-8eaa670c"><div data-product-type="price" data-product-id="{{ product.id }}" data-pf-type="ProductText" class="sc-pcLzI gJGZti pf-100dc083">{{ product.variants[0].price | money }}</div></div>{% endform %}{% endif %}</div><script>
+									window.__pageflyProducts = window.__pageflyProducts || {};
+									window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+								</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div><div class="sc-oUAMm bPnfgz pf-347b822b pf-r-dg pf-r-dg-lg--6 pf-r-dg-md--6 pf-r-dg-sm--3 pf-r-dg-xs--2" data-pf-type="ProductList" style="--pf-s-lg:72px; --pf-s-md:72px; --pf-s-sm:72px; --pf-s-xs:15px;">{% assign collection_189659742341 = collections['socks-1'] %}{% assign defaultProduct = product %}{% paginate collection_189659742341.products by 6 %}{% for product in collection_189659742341.products %}<div><div data-product-id="{{ product.id }}" data-pf-type="ProductBox" class="sc-pjGtN lgnAIx pf-3299347b"> {% if product != null %}{% form 'product', product, data-productid: product.id, class: "pf-product-form pf-form-76329934" %}<div data-product-id="{{ product.id }}" data-default-source="featured" data-pf-type="ProductImage" class="sc-pzLIQ SfOJX pf-fdb53261">{% assign img_size = product.images.size %}<div class="sc-qZusK vHMOL">{% if img_size > 1 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<picture data-href="{{ product.url }}" height="200px" spacing="10px" data-pf-type="MasterImage" data-magnifier="true" mode="view" class="sc-pQERe eAxLDs" style="height: auto;"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-img-id="{{ product.featured_image.id }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"></picture>{% if img_size > 1 %}<div spacing="10px" class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div><div data-pf-type="ProductGallery" data-product-id="{{ product.id }}" height="200px" spacing="10px" class="sc-pHHLp cdHUxN">{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<div class="pf-p-image-small-container"><div class="pf-small-img-roll" style="padding-top: 5px; margin: -5px;">	{% for image in product.images %} <div class="sc-psbuI efwYHr" style="margin: 0px 5px;"><img src="{{ image.src | img_url: 'master' }}" class="pf-show-small-img" alt="{{ image.alt | escape }}" data-img-id="{{ image.id }}"></div>{% endfor %} </div></div>{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div></div><div class="sc-qPjXN eYzxUD pf-ca763299 pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-166cca76" data-pf-type="Column"><a data-pf-type="Button" class="sc-pZdvY kuwSuz pf-f7cb86cb"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-4ee73a21">Shop now</span></a></div></div></div><h2 data-product-type="title" data-product-id="{{ product.id }}" data-href="{{ product.url }}" data-pf-type="ProductText" class="sc-ptBBy kpuSv pf-3a216c2e">{{ product.title }}</h2><div data-pf-type="Block" class="sc-oUbqx bgMQOP pf-86cb166c"><div data-product-type="price" data-product-id="{{ product.id }}" data-pf-type="ProductText" class="sc-pcLzI gJGZti pf-6c2ef7cb">{{ product.variants[0].price | money }}</div></div>{% endform %}{% endif %}</div><script>
+									window.__pageflyProducts = window.__pageflyProducts || {};
+									window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+								</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div><div class="sc-oUAMm bPnfgz pf-47edfdb5 pf-r-dg pf-r-dg-lg--6 pf-r-dg-md--6 pf-r-dg-sm--3 pf-r-dg-xs--2" data-pf-type="ProductList" style="--pf-s-lg:72px; --pf-s-md:72px; --pf-s-sm:72px; --pf-s-xs:15px;">{% assign collection_189659742341 = collections['socks-1'] %}{% assign defaultProduct = product %}{% paginate collection_189659742341.products by 6 %}{% for product in collection_189659742341.products %}<div><div data-product-id="{{ product.id }}" data-pf-type="ProductBox" class="sc-pjGtN lgnAIx pf-e7a647ed"> {% if product != null %}{% form 'product', product, data-productid: product.id, class: "pf-product-form pf-form-f7e7a647" %}<div data-product-id="{{ product.id }}" data-default-source="featured" data-pf-type="ProductImage" class="sc-pzLIQ SfOJX pf-0928931e">{% assign img_size = product.images.size %}<div class="sc-qZusK vHMOL">{% if img_size > 1 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<picture data-href="{{ product.url }}" height="200px" spacing="10px" data-pf-type="MasterImage" data-magnifier="true" mode="view" class="sc-pQERe eAxLDs" style="height: auto;"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-img-id="{{ product.featured_image.id }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"></picture>{% if img_size > 1 %}<div spacing="10px" class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div><div data-pf-type="ProductGallery" data-product-id="{{ product.id }}" height="200px" spacing="10px" class="sc-pHHLp cdHUxN">{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<div class="pf-p-image-small-container"><div class="pf-small-img-roll" style="padding-top: 5px; margin: -5px;">	{% for image in product.images %} <div class="sc-psbuI efwYHr" style="margin: 0px 5px;"><img src="{{ image.src | img_url: 'master' }}" class="pf-show-small-img" alt="{{ image.alt | escape }}" data-img-id="{{ image.id }}"></div>{% endfor %} </div></div>{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div></div><div class="sc-qPjXN eYzxUD pf-69f7e7a6 pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-069469f7" data-pf-type="Column"><a data-pf-type="Button" class="sc-pZdvY kuwSuz pf-74e8881f"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-4be37fc2">Shop now</span></a></div></div></div><h2 data-product-type="title" data-product-id="{{ product.id }}" data-href="{{ product.url }}" data-pf-type="ProductText" class="sc-ptBBy kpuSv pf-7fc2b3e0">{{ product.title }}</h2><div data-pf-type="Block" class="sc-oUbqx bgMQOP pf-881f0694"><div data-product-type="price" data-product-id="{{ product.id }}" data-pf-type="ProductText" class="sc-pcLzI gJGZti pf-b3e074e8">{{ product.variants[0].price | money }}</div></div>{% endform %}{% endif %}</div><script>
+									window.__pageflyProducts = window.__pageflyProducts || {};
+									window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+								</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div><div class="sc-oUAMm bPnfgz pf-06630928 pf-r-dg pf-r-dg-lg--6 pf-r-dg-md--6 pf-r-dg-sm--3 pf-r-dg-xs--2" data-pf-type="ProductList" style="--pf-s-lg:72px; --pf-s-md:72px; --pf-s-sm:72px; --pf-s-xs:15px;">{% assign collection_189659742341 = collections['socks-1'] %}{% assign defaultProduct = product %}{% paginate collection_189659742341.products by 6 %}{% for product in collection_189659742341.products %}<div><div data-product-id="{{ product.id }}" data-pf-type="ProductBox" class="sc-pjGtN lgnAIx pf-3d460663"> {% if product != null %}{% form 'product', product, data-productid: product.id, class: "pf-product-form pf-form-713d4606" %}<div data-product-id="{{ product.id }}" data-default-source="featured" data-pf-type="ProductImage" class="sc-pzLIQ SfOJX pf-39ef1cda">{% assign img_size = product.images.size %}<div class="sc-qZusK vHMOL">{% if img_size > 1 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<picture data-href="{{ product.url }}" height="200px" spacing="10px" data-pf-type="MasterImage" data-magnifier="true" mode="view" class="sc-pQERe eAxLDs" style="height: auto;"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-img-id="{{ product.featured_image.id }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"></picture>{% if img_size > 1 %}<div spacing="10px" class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div><div data-pf-type="ProductGallery" data-product-id="{{ product.id }}" height="200px" spacing="10px" class="sc-pHHLp cdHUxN">{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<div class="pf-p-image-small-container"><div class="pf-small-img-roll" style="padding-top: 5px; margin: -5px;">	{% for image in product.images %} <div class="sc-psbuI efwYHr" style="margin: 0px 5px;"><img src="{{ image.src | img_url: 'master' }}" class="pf-show-small-img" alt="{{ image.alt | escape }}" data-img-id="{{ image.id }}"></div>{% endfor %} </div></div>{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div></div><div class="sc-qPjXN eYzxUD pf-57713d46 pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-c1835771" data-pf-type="Column"><a data-pf-type="Button" class="sc-pZdvY kuwSuz pf-b76222f4"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-51e15214">Shop now</span></a></div></div></div><h2 data-product-type="title" data-product-id="{{ product.id }}" data-href="{{ product.url }}" data-pf-type="ProductText" class="sc-ptBBy kpuSv pf-5214986e">{{ product.title }}</h2><div data-pf-type="Block" class="sc-oUbqx bgMQOP pf-22f4c183"><div data-product-type="price" data-product-id="{{ product.id }}" data-pf-type="ProductText" class="sc-pcLzI gJGZti pf-986eb762">{{ product.variants[0].price | money }}</div></div>{% endform %}{% endif %}</div><script>
+									window.__pageflyProducts = window.__pageflyProducts || {};
+									window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+								</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div><div class="sc-oUAMm bPnfgz pf-0f6839ef pf-r-dg pf-r-dg-lg--6 pf-r-dg-md--6 pf-r-dg-sm--3 pf-r-dg-xs--2" data-pf-type="ProductList" style="--pf-s-lg:72px; --pf-s-md:72px; --pf-s-sm:72px; --pf-s-xs:15px;">{% assign collection_189659742341 = collections['socks-1'] %}{% assign defaultProduct = product %}{% paginate collection_189659742341.products by 6 %}{% for product in collection_189659742341.products %}<div><div data-product-id="{{ product.id }}" data-pf-type="ProductBox" class="sc-pjGtN lgnAIx pf-4cd00f68"> {% if product != null %}{% form 'product', product, data-productid: product.id, class: "pf-product-form pf-form-e24cd00f" %}<div data-product-id="{{ product.id }}" data-default-source="featured" data-pf-type="ProductImage" class="sc-pzLIQ SfOJX pf-b8d0f599">{% assign img_size = product.images.size %}<div class="sc-qZusK vHMOL">{% if img_size > 1 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<picture data-href="{{ product.url }}" height="200px" spacing="10px" data-pf-type="MasterImage" data-magnifier="true" mode="view" class="sc-pQERe eAxLDs" style="height: auto;"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-img-id="{{ product.featured_image.id }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"></picture>{% if img_size > 1 %}<div spacing="10px" class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div><div data-pf-type="ProductGallery" data-product-id="{{ product.id }}" height="200px" spacing="10px" class="sc-pHHLp cdHUxN">{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<div class="pf-p-image-small-container"><div class="pf-small-img-roll" style="padding-top: 5px; margin: -5px;">	{% for image in product.images %} <div class="sc-psbuI efwYHr" style="margin: 0px 5px;"><img src="{{ image.src | img_url: 'master' }}" class="pf-show-small-img" alt="{{ image.alt | escape }}" data-img-id="{{ image.id }}"></div>{% endfor %} </div></div>{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div></div><div class="sc-qPjXN eYzxUD pf-73e24cd0 pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-341873e2" data-pf-type="Column"><a data-pf-type="Button" class="sc-pZdvY kuwSuz pf-cd9002a1"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-5b007bad">Shop now</span></a></div></div></div><h2 data-product-type="title" data-product-id="{{ product.id }}" data-href="{{ product.url }}" data-pf-type="ProductText" class="sc-ptBBy kpuSv pf-7bad9e5a">{{ product.title }}</h2><div data-pf-type="Block" class="sc-oUbqx bgMQOP pf-02a13418"><div data-product-type="price" data-product-id="{{ product.id }}" data-pf-type="ProductText" class="sc-pcLzI gJGZti pf-9e5acd90">{{ product.variants[0].price | money }}</div></div>{% endform %}{% endif %}</div><script>
+									window.__pageflyProducts = window.__pageflyProducts || {};
+									window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+								</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div><div class="sc-oUAMm bPnfgz pf-068ab8d0 pf-r-dg pf-r-dg-lg--6 pf-r-dg-md--6 pf-r-dg-sm--3 pf-r-dg-xs--2" data-pf-type="ProductList" style="--pf-s-lg:72px; --pf-s-md:72px; --pf-s-sm:72px; --pf-s-xs:15px;">{% assign collection_189659742341 = collections['socks-1'] %}{% assign defaultProduct = product %}{% paginate collection_189659742341.products by 6 %}{% for product in collection_189659742341.products %}<div><div data-product-id="{{ product.id }}" data-pf-type="ProductBox" class="sc-pjGtN lgnAIx pf-64a6068a"> {% if product != null %}{% form 'product', product, data-productid: product.id, class: "pf-product-form pf-form-ff64a606" %}<div data-product-id="{{ product.id }}" data-default-source="featured" data-pf-type="ProductImage" class="sc-pzLIQ SfOJX pf-fc341b31">{% assign img_size = product.images.size %}<div class="sc-qZusK vHMOL">{% if img_size > 1 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<picture data-href="{{ product.url }}" height="200px" spacing="10px" data-pf-type="MasterImage" data-magnifier="true" mode="view" class="sc-pQERe eAxLDs" style="height: auto;"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-img-id="{{ product.featured_image.id }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"></picture>{% if img_size > 1 %}<div spacing="10px" class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div><div data-pf-type="ProductGallery" data-product-id="{{ product.id }}" height="200px" spacing="10px" class="sc-pHHLp cdHUxN">{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<div class="pf-p-image-small-container"><div class="pf-small-img-roll" style="padding-top: 5px; margin: -5px;">	{% for image in product.images %} <div class="sc-psbuI efwYHr" style="margin: 0px 5px;"><img src="{{ image.src | img_url: 'master' }}" class="pf-show-small-img" alt="{{ image.alt | escape }}" data-img-id="{{ image.id }}"></div>{% endfor %} </div></div>{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div></div><div class="sc-qPjXN eYzxUD pf-12ff64a6 pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-5d6d12ff" data-pf-type="Column"><a data-pf-type="Button" class="sc-pZdvY kuwSuz pf-cef0e6d7"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-221528e6">Shop now</span></a></div></div></div><h2 data-product-type="title" data-product-id="{{ product.id }}" data-href="{{ product.url }}" data-pf-type="ProductText" class="sc-ptBBy kpuSv pf-28e67129">{{ product.title }}</h2><div data-pf-type="Block" class="sc-oUbqx bgMQOP pf-e6d75d6d"><div data-product-type="price" data-product-id="{{ product.id }}" data-pf-type="ProductText" class="sc-pcLzI gJGZti pf-7129cef0">{{ product.variants[0].price | money }}</div></div>{% endform %}{% endif %}</div><script>
+									window.__pageflyProducts = window.__pageflyProducts || {};
+									window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+								</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div><div class="sc-oUAMm bPnfgz pf-f82ffc34 pf-r-dg pf-r-dg-lg--6 pf-r-dg-md--6 pf-r-dg-sm--3 pf-r-dg-xs--2" data-pf-type="ProductList" style="--pf-s-lg:72px; --pf-s-md:72px; --pf-s-sm:72px; --pf-s-xs:15px;">{% assign collection_189659742341 = collections['socks-1'] %}{% assign defaultProduct = product %}{% paginate collection_189659742341.products by 6 %}{% for product in collection_189659742341.products %}<div><div data-product-id="{{ product.id }}" data-pf-type="ProductBox" class="sc-pjGtN lgnAIx pf-07b4f82f"> {% if product != null %}{% form 'product', product, data-productid: product.id, class: "pf-product-form pf-form-6d07b4f8" %}<div data-product-id="{{ product.id }}" data-default-source="featured" data-pf-type="ProductImage" class="sc-pzLIQ SfOJX pf-a7700d98">{% assign img_size = product.images.size %}<div class="sc-qZusK vHMOL">{% if img_size > 1 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<picture data-href="{{ product.url }}" height="200px" spacing="10px" data-pf-type="MasterImage" data-magnifier="true" mode="view" class="sc-pQERe eAxLDs" style="height: auto;"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-img-id="{{ product.featured_image.id }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"></picture>{% if img_size > 1 %}<div spacing="10px" class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div><div data-pf-type="ProductGallery" data-product-id="{{ product.id }}" height="200px" spacing="10px" class="sc-pHHLp cdHUxN">{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<div class="pf-p-image-small-container"><div class="pf-small-img-roll" style="padding-top: 5px; margin: -5px;">	{% for image in product.images %} <div class="sc-psbuI efwYHr" style="margin: 0px 5px;"><img src="{{ image.src | img_url: 'master' }}" class="pf-show-small-img" alt="{{ image.alt | escape }}" data-img-id="{{ image.id }}"></div>{% endfor %} </div></div>{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div></div><div class="sc-qPjXN eYzxUD pf-596d07b4 pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-4f02596d" data-pf-type="Column"><a data-pf-type="Button" class="sc-pZdvY kuwSuz pf-40c343cc"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-d5adab8f">Shop now</span></a></div></div></div><h2 data-product-type="title" data-product-id="{{ product.id }}" data-href="{{ product.url }}" data-pf-type="ProductText" class="sc-ptBBy kpuSv pf-ab8fb0ad">{{ product.title }}</h2><div data-pf-type="Block" class="sc-oUbqx bgMQOP pf-43cc4f02"><div data-product-type="price" data-product-id="{{ product.id }}" data-pf-type="ProductText" class="sc-pcLzI gJGZti pf-b0ad40c3">{{ product.variants[0].price | money }}</div></div>{% endform %}{% endif %}</div><script>
+									window.__pageflyProducts = window.__pageflyProducts || {};
+									window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+								</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div><div class="sc-oUAMm bPnfgz pf-2c53a770 pf-r-dg pf-r-dg-lg--6 pf-r-dg-md--6 pf-r-dg-sm--3 pf-r-dg-xs--2" data-pf-type="ProductList" style="--pf-s-lg:72px; --pf-s-md:72px; --pf-s-sm:72px; --pf-s-xs:15px;">{% assign collection_189659742341 = collections['socks-1'] %}{% assign defaultProduct = product %}{% paginate collection_189659742341.products by 6 %}{% for product in collection_189659742341.products %}<div><div data-product-id="{{ product.id }}" data-pf-type="ProductBox" class="sc-pjGtN lgnAIx pf-1a7b2c53"> {% if product != null %}{% form 'product', product, data-productid: product.id, class: "pf-product-form pf-form-ca1a7b2c" %}<div data-product-id="{{ product.id }}" data-default-source="featured" data-pf-type="ProductImage" class="sc-pzLIQ SfOJX pf-e8312def">{% assign img_size = product.images.size %}<div class="sc-qZusK vHMOL">{% if img_size > 1 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<picture data-href="{{ product.url }}" height="200px" spacing="10px" data-pf-type="MasterImage" data-magnifier="true" mode="view" class="sc-pQERe eAxLDs" style="height: auto;"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-img-id="{{ product.featured_image.id }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"></picture>{% if img_size > 1 %}<div spacing="10px" class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div><div data-pf-type="ProductGallery" data-product-id="{{ product.id }}" height="200px" spacing="10px" class="sc-pHHLp cdHUxN">{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<div class="pf-p-image-small-container"><div class="pf-small-img-roll" style="padding-top: 5px; margin: -5px;">	{% for image in product.images %} <div class="sc-psbuI efwYHr" style="margin: 0px 5px;"><img src="{{ image.src | img_url: 'master' }}" class="pf-show-small-img" alt="{{ image.alt | escape }}" data-img-id="{{ image.id }}"></div>{% endfor %} </div></div>{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div></div><div class="sc-qPjXN eYzxUD pf-1aca1a7b pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-25fe1aca" data-pf-type="Column"><a data-pf-type="Button" class="sc-pZdvY kuwSuz pf-a78ffb15"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-0467a492">Shop now</span></a></div></div></div><h2 data-product-type="title" data-product-id="{{ product.id }}" data-href="{{ product.url }}" data-pf-type="ProductText" class="sc-ptBBy kpuSv pf-a492f482">{{ product.title }}</h2><div data-pf-type="Block" class="sc-oUbqx bgMQOP pf-fb1525fe"><div data-product-type="price" data-product-id="{{ product.id }}" data-pf-type="ProductText" class="sc-pcLzI gJGZti pf-f482a78f">{{ product.variants[0].price | money }}</div></div>{% endform %}{% endif %}</div><script>
+									window.__pageflyProducts = window.__pageflyProducts || {};
+									window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+								</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div><div class="sc-oUAMm bPnfgz pf-c424e831 pf-r-dg pf-r-dg-lg--6 pf-r-dg-md--6 pf-r-dg-sm--3 pf-r-dg-xs--2" data-pf-type="ProductList" style="--pf-s-lg:72px; --pf-s-md:72px; --pf-s-sm:72px; --pf-s-xs:15px;">{% assign collection_189659742341 = collections['socks-1'] %}{% assign defaultProduct = product %}{% paginate collection_189659742341.products by 6 %}{% for product in collection_189659742341.products %}<div><div data-product-id="{{ product.id }}" data-pf-type="ProductBox" class="sc-pjGtN lgnAIx pf-3e59c424"> {% if product != null %}{% form 'product', product, data-productid: product.id, class: "pf-product-form pf-form-ae3e59c4" %}<div data-product-id="{{ product.id }}" data-default-source="featured" data-pf-type="ProductImage" class="sc-pzLIQ SfOJX pf-2a10950c">{% assign img_size = product.images.size %}<div class="sc-qZusK vHMOL">{% if img_size > 1 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<picture data-href="{{ product.url }}" height="200px" spacing="10px" data-pf-type="MasterImage" data-magnifier="true" mode="view" class="sc-pQERe eAxLDs" style="height: auto;"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-img-id="{{ product.featured_image.id }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"></picture>{% if img_size > 1 %}<div spacing="10px" class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div><div data-pf-type="ProductGallery" data-product-id="{{ product.id }}" height="200px" spacing="10px" class="sc-pHHLp cdHUxN">{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<div class="pf-p-image-small-container"><div class="pf-small-img-roll" style="padding-top: 5px; margin: -5px;">	{% for image in product.images %} <div class="sc-psbuI efwYHr" style="margin: 0px 5px;"><img src="{{ image.src | img_url: 'master' }}" class="pf-show-small-img" alt="{{ image.alt | escape }}" data-img-id="{{ image.id }}"></div>{% endfor %} </div></div>{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div></div><div class="sc-qPjXN eYzxUD pf-e2ae3e59 pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-20d1e2ae" data-pf-type="Column"><a data-pf-type="Button" class="sc-pZdvY kuwSuz pf-83afcecd"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-59ef8049">Shop now</span></a></div></div></div><h2 data-product-type="title" data-product-id="{{ product.id }}" data-href="{{ product.url }}" data-pf-type="ProductText" class="sc-ptBBy kpuSv pf-804967fb">{{ product.title }}</h2><div data-pf-type="Block" class="sc-oUbqx bgMQOP pf-cecd20d1"><div data-product-type="price" data-product-id="{{ product.id }}" data-pf-type="ProductText" class="sc-pcLzI gJGZti pf-67fb83af">{{ product.variants[0].price | money }}</div></div>{% endform %}{% endif %}</div><script>
+									window.__pageflyProducts = window.__pageflyProducts || {};
+									window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+								</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div><div class="sc-oUAMm bPnfgz pf-240a2a10 pf-r-dg pf-r-dg-lg--6 pf-r-dg-md--6 pf-r-dg-sm--3 pf-r-dg-xs--2" data-pf-type="ProductList" style="--pf-s-lg:72px; --pf-s-md:72px; --pf-s-sm:72px; --pf-s-xs:15px;">{% assign collection_189659742341 = collections['socks-1'] %}{% assign defaultProduct = product %}{% paginate collection_189659742341.products by 6 %}{% for product in collection_189659742341.products %}<div><div data-product-id="{{ product.id }}" data-pf-type="ProductBox" class="sc-pjGtN lgnAIx pf-f39a240a"> {% if product != null %}{% form 'product', product, data-productid: product.id, class: "pf-product-form pf-form-28f39a24" %}<div data-product-id="{{ product.id }}" data-default-source="featured" data-pf-type="ProductImage" class="sc-pzLIQ SfOJX pf-a35b3e2b">{% assign img_size = product.images.size %}<div class="sc-qZusK vHMOL">{% if img_size > 1 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<picture data-href="{{ product.url }}" height="200px" spacing="10px" data-pf-type="MasterImage" data-magnifier="true" mode="view" class="sc-pQERe eAxLDs" style="height: auto;"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-img-id="{{ product.featured_image.id }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"></picture>{% if img_size > 1 %}<div spacing="10px" class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div><div data-pf-type="ProductGallery" data-product-id="{{ product.id }}" height="200px" spacing="10px" class="sc-pHHLp cdHUxN">{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<div class="pf-p-image-small-container"><div class="pf-small-img-roll" style="padding-top: 5px; margin: -5px;">	{% for image in product.images %} <div class="sc-psbuI efwYHr" style="margin: 0px 5px;"><img src="{{ image.src | img_url: 'master' }}" class="pf-show-small-img" alt="{{ image.alt | escape }}" data-img-id="{{ image.id }}"></div>{% endfor %} </div></div>{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div></div><div class="sc-qPjXN eYzxUD pf-1228f39a pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-ea531228" data-pf-type="Column"><a data-pf-type="Button" class="sc-pZdvY kuwSuz pf-7847fba0"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-86dc81b5">Shop now</span></a></div></div></div><h2 data-product-type="title" data-product-id="{{ product.id }}" data-href="{{ product.url }}" data-pf-type="ProductText" class="sc-ptBBy kpuSv pf-81b5a205">{{ product.title }}</h2><div data-pf-type="Block" class="sc-oUbqx bgMQOP pf-fba0ea53"><div data-product-type="price" data-product-id="{{ product.id }}" data-pf-type="ProductText" class="sc-pcLzI gJGZti pf-a2057847">{{ product.variants[0].price | money }}</div></div>{% endform %}{% endif %}</div><script>
+									window.__pageflyProducts = window.__pageflyProducts || {};
+									window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+								</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div><div class="sc-oUAMm bPnfgz pf-1b2ca35b pf-r-dg pf-r-dg-lg--6 pf-r-dg-md--6 pf-r-dg-sm--3 pf-r-dg-xs--2" data-pf-type="ProductList" style="--pf-s-lg:72px; --pf-s-md:72px; --pf-s-sm:72px; --pf-s-xs:15px;">{% assign collection_189659742341 = collections['socks-1'] %}{% assign defaultProduct = product %}{% paginate collection_189659742341.products by 6 %}{% for product in collection_189659742341.products %}<div><div data-product-id="{{ product.id }}" data-pf-type="ProductBox" class="sc-pjGtN lgnAIx pf-5acf1b2c"> {% if product != null %}{% form 'product', product, data-productid: product.id, class: "pf-product-form pf-form-a55acf1b" %}<div data-product-id="{{ product.id }}" data-default-source="featured" data-pf-type="ProductImage" class="sc-pzLIQ SfOJX pf-fcba4307">{% assign img_size = product.images.size %}<div class="sc-qZusK vHMOL">{% if img_size > 1 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<picture data-href="{{ product.url }}" height="200px" spacing="10px" data-pf-type="MasterImage" data-magnifier="true" mode="view" class="sc-pQERe eAxLDs" style="height: auto;"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-img-id="{{ product.featured_image.id }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"></picture>{% if img_size > 1 %}<div spacing="10px" class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div><div data-pf-type="ProductGallery" data-product-id="{{ product.id }}" height="200px" spacing="10px" class="sc-pHHLp cdHUxN">{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<div class="pf-p-image-small-container"><div class="pf-small-img-roll" style="padding-top: 5px; margin: -5px;">	{% for image in product.images %} <div class="sc-psbuI efwYHr" style="margin: 0px 5px;"><img src="{{ image.src | img_url: 'master' }}" class="pf-show-small-img" alt="{{ image.alt | escape }}" data-img-id="{{ image.id }}"></div>{% endfor %} </div></div>{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div></div><div class="sc-qPjXN eYzxUD pf-cda55acf pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-ff27cda5" data-pf-type="Column"><a data-pf-type="Button" class="sc-pZdvY kuwSuz pf-1615bba2"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-cb408f09">Shop now</span></a></div></div></div><h2 data-product-type="title" data-product-id="{{ product.id }}" data-href="{{ product.url }}" data-pf-type="ProductText" class="sc-ptBBy kpuSv pf-8f09ee40">{{ product.title }}</h2><div data-pf-type="Block" class="sc-oUbqx bgMQOP pf-bba2ff27"><div data-product-type="price" data-product-id="{{ product.id }}" data-pf-type="ProductText" class="sc-pcLzI gJGZti pf-ee401615">{{ product.variants[0].price | money }}</div></div>{% endform %}{% endif %}</div><script>
+									window.__pageflyProducts = window.__pageflyProducts || {};
+									window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+								</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div><div class="sc-oUAMm bPnfgz pf-d4cffcba pf-r-dg pf-r-dg-lg--6 pf-r-dg-md--6 pf-r-dg-sm--3 pf-r-dg-xs--2" data-pf-type="ProductList" style="--pf-s-lg:72px; --pf-s-md:72px; --pf-s-sm:72px; --pf-s-xs:15px;">{% assign collection_189659742341 = collections['socks-1'] %}{% assign defaultProduct = product %}{% paginate collection_189659742341.products by 6 %}{% for product in collection_189659742341.products %}<div><div data-product-id="{{ product.id }}" data-pf-type="ProductBox" class="sc-pjGtN lgnAIx pf-07a6d4cf"> {% if product != null %}{% form 'product', product, data-productid: product.id, class: "pf-product-form pf-form-1a07a6d4" %}<div data-product-id="{{ product.id }}" data-default-source="featured" data-pf-type="ProductImage" class="sc-pzLIQ SfOJX pf-10a9f1f0">{% assign img_size = product.images.size %}<div class="sc-qZusK vHMOL">{% if img_size > 1 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<picture data-href="{{ product.url }}" height="200px" spacing="10px" data-pf-type="MasterImage" data-magnifier="true" mode="view" class="sc-pQERe eAxLDs" style="height: auto;"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-img-id="{{ product.featured_image.id }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"></picture>{% if img_size > 1 %}<div spacing="10px" class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div><div data-pf-type="ProductGallery" data-product-id="{{ product.id }}" height="200px" spacing="10px" class="sc-pHHLp cdHUxN">{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<div class="pf-p-image-small-container"><div class="pf-small-img-roll" style="padding-top: 5px; margin: -5px;">	{% for image in product.images %} <div class="sc-psbuI efwYHr" style="margin: 0px 5px;"><img src="{{ image.src | img_url: 'master' }}" class="pf-show-small-img" alt="{{ image.alt | escape }}" data-img-id="{{ image.id }}"></div>{% endfor %} </div></div>{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div></div><div class="sc-qPjXN eYzxUD pf-681a07a6 pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-3422681a" data-pf-type="Column"><a data-pf-type="Button" class="sc-pZdvY kuwSuz pf-a1663e37"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-e8e00050">Shop now</span></a></div></div></div><h2 data-product-type="title" data-product-id="{{ product.id }}" data-href="{{ product.url }}" data-pf-type="ProductText" class="sc-ptBBy kpuSv pf-0050f5f4">{{ product.title }}</h2><div data-pf-type="Block" class="sc-oUbqx bgMQOP pf-3e373422"><div data-product-type="price" data-product-id="{{ product.id }}" data-pf-type="ProductText" class="sc-pcLzI gJGZti pf-f5f4a166">{{ product.variants[0].price | money }}</div></div>{% endform %}{% endif %}</div><script>
+									window.__pageflyProducts = window.__pageflyProducts || {};
+									window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+								</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div><div class="sc-oUAMm bPnfgz pf-ced110a9 pf-r-dg pf-r-dg-lg--6 pf-r-dg-md--6 pf-r-dg-sm--3 pf-r-dg-xs--2" data-pf-type="ProductList" style="--pf-s-lg:72px; --pf-s-md:72px; --pf-s-sm:72px; --pf-s-xs:15px;">{% assign collection_189659742341 = collections['socks-1'] %}{% assign defaultProduct = product %}{% paginate collection_189659742341.products by 6 %}{% for product in collection_189659742341.products %}<div><div data-product-id="{{ product.id }}" data-pf-type="ProductBox" class="sc-pjGtN lgnAIx pf-53afced1"> {% if product != null %}{% form 'product', product, data-productid: product.id, class: "pf-product-form pf-form-7d53afce" %}<div data-product-id="{{ product.id }}" data-default-source="featured" data-pf-type="ProductImage" class="sc-pzLIQ SfOJX pf-d253361a">{% assign img_size = product.images.size %}<div class="sc-qZusK vHMOL">{% if img_size > 1 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<picture data-href="{{ product.url }}" height="200px" spacing="10px" data-pf-type="MasterImage" data-magnifier="true" mode="view" class="sc-pQERe eAxLDs" style="height: auto;"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-img-id="{{ product.featured_image.id }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"></picture>{% if img_size > 1 %}<div spacing="10px" class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div><div data-pf-type="ProductGallery" data-product-id="{{ product.id }}" height="200px" spacing="10px" class="sc-pHHLp cdHUxN">{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<div class="pf-p-image-small-container"><div class="pf-small-img-roll" style="padding-top: 5px; margin: -5px;">	{% for image in product.images %} <div class="sc-psbuI efwYHr" style="margin: 0px 5px;"><img src="{{ image.src | img_url: 'master' }}" class="pf-show-small-img" alt="{{ image.alt | escape }}" data-img-id="{{ image.id }}"></div>{% endfor %} </div></div>{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div></div><div class="sc-qPjXN eYzxUD pf-cb7d53af pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-adefcb7d" data-pf-type="Column"><a data-pf-type="Button" class="sc-pZdvY kuwSuz pf-af91b071"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-e3ba7a92">Shop now</span></a></div></div></div><h2 data-product-type="title" data-product-id="{{ product.id }}" data-href="{{ product.url }}" data-pf-type="ProductText" class="sc-ptBBy kpuSv pf-7a92fd04">{{ product.title }}</h2><div data-pf-type="Block" class="sc-oUbqx bgMQOP pf-b071adef"><div data-product-type="price" data-product-id="{{ product.id }}" data-pf-type="ProductText" class="sc-pcLzI gJGZti pf-fd04af91">{{ product.variants[0].price | money }}</div></div>{% endform %}{% endif %}</div><script>
+									window.__pageflyProducts = window.__pageflyProducts || {};
+									window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+								</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div><div class="sc-oUAMm bPnfgz pf-a680d253 pf-r-dg pf-r-dg-lg--6 pf-r-dg-md--6 pf-r-dg-sm--3 pf-r-dg-xs--2" data-pf-type="ProductList" style="--pf-s-lg:72px; --pf-s-md:72px; --pf-s-sm:72px; --pf-s-xs:15px;">{% assign collection_189659742341 = collections['socks-1'] %}{% assign defaultProduct = product %}{% paginate collection_189659742341.products by 6 %}{% for product in collection_189659742341.products %}<div><div data-product-id="{{ product.id }}" data-pf-type="ProductBox" class="sc-pjGtN lgnAIx pf-da25a680"> {% if product != null %}{% form 'product', product, data-productid: product.id, class: "pf-product-form pf-form-f8da25a6" %}<div data-product-id="{{ product.id }}" data-default-source="featured" data-pf-type="ProductImage" class="sc-pzLIQ SfOJX pf-525a6e87">{% assign img_size = product.images.size %}<div class="sc-qZusK vHMOL">{% if img_size > 1 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<picture data-href="{{ product.url }}" height="200px" spacing="10px" data-pf-type="MasterImage" data-magnifier="true" mode="view" class="sc-pQERe eAxLDs" style="height: auto;"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-img-id="{{ product.featured_image.id }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"></picture>{% if img_size > 1 %}<div spacing="10px" class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div><div data-pf-type="ProductGallery" data-product-id="{{ product.id }}" height="200px" spacing="10px" class="sc-pHHLp cdHUxN">{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<div class="pf-p-image-small-container"><div class="pf-small-img-roll" style="padding-top: 5px; margin: -5px;">	{% for image in product.images %} <div class="sc-psbuI efwYHr" style="margin: 0px 5px;"><img src="{{ image.src | img_url: 'master' }}" class="pf-show-small-img" alt="{{ image.alt | escape }}" data-img-id="{{ image.id }}"></div>{% endfor %} </div></div>{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div></div><div class="sc-qPjXN eYzxUD pf-9bf8da25 pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-75969bf8" data-pf-type="Column"><a data-pf-type="Button" class="sc-pZdvY kuwSuz pf-9aed8513"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-34353db9">Shop now</span></a></div></div></div><h2 data-product-type="title" data-product-id="{{ product.id }}" data-href="{{ product.url }}" data-pf-type="ProductText" class="sc-ptBBy kpuSv pf-3db95459">{{ product.title }}</h2><div data-pf-type="Block" class="sc-oUbqx bgMQOP pf-85137596"><div data-product-type="price" data-product-id="{{ product.id }}" data-pf-type="ProductText" class="sc-pcLzI gJGZti pf-54599aed">{{ product.variants[0].price | money }}</div></div>{% endform %}{% endif %}</div><script>
+									window.__pageflyProducts = window.__pageflyProducts || {};
+									window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+								</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div><div class="sc-oUAMm bPnfgz pf-868d525a pf-r-dg pf-r-dg-lg--6 pf-r-dg-md--6 pf-r-dg-sm--3 pf-r-dg-xs--2" data-pf-type="ProductList" style="--pf-s-lg:72px; --pf-s-md:72px; --pf-s-sm:72px; --pf-s-xs:15px;">{% assign collection_189659742341 = collections['socks-1'] %}{% assign defaultProduct = product %}{% paginate collection_189659742341.products by 6 %}{% for product in collection_189659742341.products %}<div><div data-product-id="{{ product.id }}" data-pf-type="ProductBox" class="sc-pjGtN lgnAIx pf-7f35868d"> {% if product != null %}{% form 'product', product, data-productid: product.id, class: "pf-product-form pf-form-7c7f3586" %}<div data-product-id="{{ product.id }}" data-default-source="featured" data-pf-type="ProductImage" class="sc-pzLIQ SfOJX pf-edcbb1df">{% assign img_size = product.images.size %}<div class="sc-qZusK vHMOL">{% if img_size > 1 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<picture data-href="{{ product.url }}" height="200px" spacing="10px" data-pf-type="MasterImage" data-magnifier="true" mode="view" class="sc-pQERe eAxLDs" style="height: auto;"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-img-id="{{ product.featured_image.id }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"></picture>{% if img_size > 1 %}<div spacing="10px" class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div><div data-pf-type="ProductGallery" data-product-id="{{ product.id }}" height="200px" spacing="10px" class="sc-pHHLp cdHUxN">{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<div class="pf-p-image-small-container"><div class="pf-small-img-roll" style="padding-top: 5px; margin: -5px;">	{% for image in product.images %} <div class="sc-psbuI efwYHr" style="margin: 0px 5px;"><img src="{{ image.src | img_url: 'master' }}" class="pf-show-small-img" alt="{{ image.alt | escape }}" data-img-id="{{ image.id }}"></div>{% endfor %} </div></div>{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div></div><div class="sc-qPjXN eYzxUD pf-217c7f35 pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-8352217c" data-pf-type="Column"><a data-pf-type="Button" class="sc-pZdvY kuwSuz pf-40c96342"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-d6acda95">Shop now</span></a></div></div></div><h2 data-product-type="title" data-product-id="{{ product.id }}" data-href="{{ product.url }}" data-pf-type="ProductText" class="sc-ptBBy kpuSv pf-da9570fc">{{ product.title }}</h2><div data-pf-type="Block" class="sc-oUbqx bgMQOP pf-63428352"><div data-product-type="price" data-product-id="{{ product.id }}" data-pf-type="ProductText" class="sc-pcLzI gJGZti pf-70fc40c9">{{ product.variants[0].price | money }}</div></div>{% endform %}{% endif %}</div><script>
+									window.__pageflyProducts = window.__pageflyProducts || {};
+									window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+								</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div><div class="sc-oUAMm bPnfgz pf-3adeedcb pf-r-dg pf-r-dg-lg--6 pf-r-dg-md--6 pf-r-dg-sm--3 pf-r-dg-xs--2" data-pf-type="ProductList" style="--pf-s-lg:72px; --pf-s-md:72px; --pf-s-sm:72px; --pf-s-xs:15px;">{% assign collection_189659742341 = collections['socks-1'] %}{% assign defaultProduct = product %}{% paginate collection_189659742341.products by 6 %}{% for product in collection_189659742341.products %}<div><div data-product-id="{{ product.id }}" data-pf-type="ProductBox" class="sc-pjGtN lgnAIx pf-e5693ade"> {% if product != null %}{% form 'product', product, data-productid: product.id, class: "pf-product-form pf-form-2ee5693a" %}<div data-product-id="{{ product.id }}" data-default-source="featured" data-pf-type="ProductImage" class="sc-pzLIQ SfOJX pf-8a735747">{% assign img_size = product.images.size %}<div class="sc-qZusK vHMOL">{% if img_size > 1 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<picture data-href="{{ product.url }}" height="200px" spacing="10px" data-pf-type="MasterImage" data-magnifier="true" mode="view" class="sc-pQERe eAxLDs" style="height: auto;"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-img-id="{{ product.featured_image.id }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"></picture>{% if img_size > 1 %}<div spacing="10px" class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div><div data-pf-type="ProductGallery" data-product-id="{{ product.id }}" height="200px" spacing="10px" class="sc-pHHLp cdHUxN">{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image prev-arrow"><i class="fa fa-angle-left"></i></div>{% endif %}<div class="pf-p-image-small-container"><div class="pf-small-img-roll" style="padding-top: 5px; margin: -5px;">	{% for image in product.images %} <div class="sc-psbuI efwYHr" style="margin: 0px 5px;"><img src="{{ image.src | img_url: 'master' }}" class="pf-show-small-img" alt="{{ image.alt | escape }}" data-img-id="{{ image.id }}"></div>{% endfor %} </div></div>{% if img_size > 5 %}<div class="sc-qQZrP geCFJR pf-navigation-list-image next-arrow"><i class="fa fa-angle-right"></i></div>{% endif %}</div></div><div class="sc-qPjXN eYzxUD pf-f22ee569 pf-r pf-r-eh" data-pf-type="Row" style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;"><div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12"><div class="sc-pkUyL fTyjzF pf-f4dff22e" data-pf-type="Column"><a data-pf-type="Button" class="sc-pZdvY kuwSuz pf-aaac47dd"><span data-pf-type="Text" class="sc-ptSuy fnmilh pf-14e36e01">Shop now</span></a></div></div></div><h2 data-product-type="title" data-product-id="{{ product.id }}" data-href="{{ product.url }}" data-pf-type="ProductText" class="sc-ptBBy kpuSv pf-6e0125ec">{{ product.title }}</h2><div data-pf-type="Block" class="sc-oUbqx bgMQOP pf-47ddf4df"><div data-product-type="price" data-product-id="{{ product.id }}" data-pf-type="ProductText" class="sc-pcLzI gJGZti pf-25ecaaac">{{ product.variants[0].price | money }}</div></div>{% endform %}{% endif %}</div><script>
+									window.__pageflyProducts = window.__pageflyProducts || {};
+									window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }}
+				};
+								</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div></div></div></div></div></div><div data-container="true" class="sc-pZopv bjKdkd pf-c2f7b27f" data-pf-type="Section"><div class="sc-pQQXS iWCqut" style="max-width: 1170px;"></div></div></div></div></div><script>
+					window.__pagefly_setting__={"baseURL":"https://apps.pagefly.io","analyticsURL":"https://analytics.pagefly.io","isBackend":false,"cdnURL":"https://cdn.pagefly.io","pageflyVersion":"2.17.8","shopDomain":"livingtex-global.myshopify.com","elementData":{"pf-bc7b4d74":{"listPosition":"bottom","limit":5,"height":"200px","spacing":"10px","listLayout":"slider","_type":"ProductImage"},"pf-31ee52d9":{"listPosition":"bottom","limit":5,"height":"200px","spacing":"10px","listLayout":"slider","_type":"ProductImage"},"pf-0adcc1ba":{"listPosition":"bottom","limit":5,"height":"200px","spacing":"10px","listLayout":"slider","_type":"ProductImage"},"pf-575e6aaa":{"listPosition":"bottom","limit":5,"height":"200px","spacing":"10px","listLayout":"slider","_type":"ProductImage"},"pf-90045723":{"listPosition":"bottom","limit":5,"height":"200px","spacing":"10px","listLayout":"slider","_type":"ProductImage"},"pf-80c03613":{"listPosition":"bottom","limit":5,"height":"200px","spacing":"10px","listLayout":"slider","_type":"ProductImage"},"pf-a62fc830":{"listPosition":"bottom","limit":5,"height":"200px","spacing":"10px","listLayout":"slider","_type":"ProductImage"},"pf-7be7b03b":{"listPosition":"bottom","limit":5,"height":"200px","spacing":"10px","listLayout":"slider","_type":"ProductImage"},"pf-308a1d4e":{"listPosition":"bottom","limit":5,"height":"200px","spacing":"10px","listLayout":"slider","_type":"ProductImage"},"pf-8a1d7433":{"listPosition":"bottom","limit":5,"height":"200px","spacing":"10px","listLayout":"slider","_type":"ProductImage"},"pf-7d965f60":{"listPosition":"bottom","limit":5,"height":"200px","spacing":"10px","listLayout":"slider","_type":"ProductImage"},"pf-40892111":{"listPosition":"bottom","limit":5,"height":"200px","spacing":"10px","listLayout":"slider","_type":"ProductImage"},"pf-822b6437":{"listPosition":"bottom","limit":5,"height":"200px","spacing":"10px","listLayout":"slider","_type":"ProductImage"},"pf-fdb53261":{"listPosition":"bottom","limit":5,"height":"200px","spacing":"10px","listLayout":"slider","_type":"ProductImage"},"pf-0928931e":{"listPosition":"bottom","limit":5,"height":"200px","spacing":"10px","listLayout":"slider","_type":"ProductImage"},"pf-39ef1cda":{"listPosition":"bottom","limit":5,"height":"200px","spacing":"10px","listLayout":"slider","_type":"ProductImage"},"pf-b8d0f599":{"listPosition":"bottom","limit":5,"height":"200px","spacing":"10px","listLayout":"slider","_type":"ProductImage"},"pf-fc341b31":{"listPosition":"bottom","limit":5,"height":"200px","spacing":"10px","listLayout":"slider","_type":"ProductImage"},"pf-a7700d98":{"listPosition":"bottom","limit":5,"height":"200px","spacing":"10px","listLayout":"slider","_type":"ProductImage"},"pf-e8312def":{"listPosition":"bottom","limit":5,"height":"200px","spacing":"10px","listLayout":"slider","_type":"ProductImage"},"pf-2a10950c":{"listPosition":"bottom","limit":5,"height":"200px","spacing":"10px","listLayout":"slider","_type":"ProductImage"},"pf-a35b3e2b":{"listPosition":"bottom","limit":5,"height":"200px","spacing":"10px","listLayout":"slider","_type":"ProductImage"},"pf-fcba4307":{"listPosition":"bottom","limit":5,"height":"200px","spacing":"10px","listLayout":"slider","_type":"ProductImage"},"pf-10a9f1f0":{"listPosition":"bottom","limit":5,"height":"200px","spacing":"10px","listLayout":"slider","_type":"ProductImage"},"pf-d253361a":{"listPosition":"bottom","limit":5,"height":"200px","spacing":"10px","listLayout":"slider","_type":"ProductImage"},"pf-525a6e87":{"listPosition":"bottom","limit":5,"height":"200px","spacing":"10px","listLayout":"slider","_type":"ProductImage"},"pf-edcbb1df":{"listPosition":"bottom","limit":5,"height":"200px","spacing":"10px","listLayout":"slider","_type":"ProductImage"},"pf-8a735747":{"listPosition":"bottom","limit":5,"height":"200px","spacing":"10px","listLayout":"slider","_type":"ProductImage"}},"pageTitle":"basket","pageType":"collection","pageId":"bea285f3-e062-4742-b185-f035a9adb608","lazyLoad":false,"imageLazyLoad":false,"nativeImageLazyLoad":true,"trackingIDs":[],"shopifyProxyPath":"/a/pf_preview","updatedTime":"2021-03-17T08:47:37.475Z"};
+					window.__pagefly_setting__.moneyFormat = {{shop.money_format | json}}
+				</script><script src="https://cdn.pagefly.io/pagefly/2.17.8/core/helper.js?t=20210317140306" defer></script>

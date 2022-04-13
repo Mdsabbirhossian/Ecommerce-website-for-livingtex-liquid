@@ -1,0 +1,19 @@
+{% if request.page_type == 'product' %}
+{%- capture dhseo_meta_description -%}
+{{ product.description | truncatewords: 150, '' }} -{{ shop.name }} 
+{%- endcapture -%}
+{% endif %}
+{% if request.page_type == 'article' %}
+{%- capture dhseo_meta_description -%}
+{{ article.excerpt_or_content | truncatewords: 150, ''}} -{{ shop.name }} 
+{%- endcapture -%}
+{% endif %}
+{% if request.page_type == 'page' %}
+{%- capture dhseo_meta_description -%}
+{{ page_description | truncatewords: 150, '' }} -{{ shop.name }} 
+{%- endcapture -%}
+{% endif %}
+{% if dhseo_meta_description %}
+{%- assign dhpage_description = dhseo_meta_description | strip_html | strip -%}
+<meta name="description" content="{{ dhpage_description | escape }}">
+{% endif %}

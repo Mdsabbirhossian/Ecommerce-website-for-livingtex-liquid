@@ -1,0 +1,58 @@
+{%comment%} ALPHA Code: Don't Delete {%endcomment%}
+    <script>
+    {% if product %}
+      {% assign cids = product.collections | map: 'id' | join: ',' %}
+      {% assign tids = product.tags | join: ","  | escape %}
+      {% assign alphaSelectedVariant = product.selected_or_first_available_variant | map: 'id' %}
+    {% endif %}
+      {% if customer %}
+      {% assign customerId = customer %}
+      {% endif %}
+    window.alphaStore = {
+      collections: [{{ cids }}],
+      tags: '{{ tids }}'.split(','),
+      selectedVariantId: {{ alphaSelectedVariant | default: 'null' }},
+      moneyFormat: {{ shop.money_format | json }},
+      moneyFormatWithCurrency: {{ shop.money_with_currency_format | json }},
+      currency: "{{ shop.currency }}",
+      customerId: {{ customerId | json | default: 'null' }},
+      productAvailable: {{ product.available | default: 'null'}},
+      productMapping: []
+    }
+    
+    {% if cart %}
+      window.alphaStore.cartTotal = {{ cart.total_price }};
+      {% for item in cart.items %}
+    window.alphaStore.productMapping.push({
+      	productId: '{{ item.product.id }}', 
+        variantId: '{{ item.variant_id }}',
+      	collections: ["{{ item.product.collections | map: 'id' | join: '", "' }}"],
+      	tags: "{{ item.product.tags | join: ',' | escape }}".split(','),
+        product_id: "{{ item.product.id }}",
+        variant_id: "{{ item.variant_id }}",
+      	properties: {{ item.properties | json }} || [],
+      	quantity: {{ item.quantity }},
+      	key: '{{ item.key }}',
+      });
+      {% endfor %}
+    {% endif %}
+    {% assign isAlphaInstalled = false %}
+    {% if content_for_header contains 'alpha.helixo.co' %} {% assign isAlphaInstalled = true %} {% endif %}
+    window.isAlphaInstalled = {{ isAlphaInstalled }};
+    function alphaScriptLoader(scriptUrl) {
+        var element = document.createElement('script');
+        element.src = scriptUrl;
+        element.type = 'text/javascript';
+        document.getElementsByTagName('head')[0].appendChild(element);
+    }
+    if(window.isAlphaInstalled) console.log('%c ALPHA: Discount Upsell & Cross sell Loaded!', 'font-weight: bold; letter-spacing: 2px; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", Arial, sans-serif;font-size: 14px;color: rgb(25, 124, 255); text-shadow: 2px 2px 0 rgb(62, 246, 255)');
+    if(!('noModule' in HTMLScriptElement.prototype) && window.isAlphaInstalled) {
+        alphaScriptLoader('https://alpha.helixo.co/scripts/sdk.es5.min.js');
+        console.log('ALPHA: ES5 Script Loading');
+    }
+    </script>
+    <script>
+    
+    </script>
+    {% if isAlphaInstalled == true %}<script async src="https://alpha.helixo.co/scripts/sdk.min.js?shop={{ shop.permanent_domain  }}"></script>{% endif %}
+    

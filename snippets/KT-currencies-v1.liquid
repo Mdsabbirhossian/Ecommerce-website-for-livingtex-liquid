@@ -1,0 +1,60 @@
+
+<script type="text/javascript" async="async">
+    jQuery.ajax({
+      url: "https://cdn.kilatechapps.com/media/KT-currency.js", 
+      type:"GET", 
+      cache: false, 
+      dataType: 'json',
+      success: (data, status)=>{
+        if(typeof KTCurrency==="undefined"){KTCurrency={}}
+        KTCurrency.rates = data.rates;
+        KTCurrency.Datetime = data.Datetime;
+        KTCurrency.id = data.id;
+        KTCurrency.convert = function(amount, from, to) {return  (amount * this.rates[to]) / this.rates[from]};
+        
+        // Old kt-jquery.currencies.min.js Content
+        KTCurrency.lshandler = (key, value)=>{ if (typeof value != "undefined") { localStorage.setItem(key, value); } else { return localStorage.getItem(key); }}
+        KTCurrency.formatMoney=function(b,g){if(typeof Shopify.formatMoney==="function"){return Shopify.formatMoney(b,g)}if(typeof b=="string"){b=b.replace(".","")}var f="";var e=/\{\{\s*(\w+)\s*\}\}/;var a=g||"${{amount}}";function c(h,i){return(typeof h=="undefined"?i:h)}function d(m,k,l,j){k=c(k,2);l=c(l,",");j=c(j,".");if(isNaN(m)||m==null){return 0}m=(m/100).toFixed(k);var n=m.split("."),i=n[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g,"$1"+l),h=n[1]?(j+n[1]):"";return i+h}switch(a.match(e)[1]){case"amount":f=d(b,2);break;case"amount_no_decimals":f=d(b,0);break;case"amount_with_comma_separator":f=d(b,2,".",",");break;case"amount_no_decimals_with_comma_separator":f=d(b,0,".",",");break}return a.replace(e,f)};
+        KTCurrency.currentCurrency="";
+        KTCurrency.format="money_with_currency_format";
+        KTCurrency.convertAll=function(c,b,a,d){
+          jQuery(a||"span.money").each(function(){if(jQuery(this).attr("data-currency")===b){return}if(jQuery(this).attr("data-currency-"+b)){jQuery(this).html(jQuery(this).attr("data-currency-"+b))}else{var e=0;var f=KTCurrency.moneyFormats[c][d||KTCurrency.format]||"{{amount}}";var g=KTCurrency.moneyFormats[b][d||KTCurrency.format]||"{{amount}}";if(f.indexOf("amount_no_decimals")!==-1){e=KTCurrency.convert(parseInt(jQuery(this).html().replace(/[^0-9]/g,""),10)*100,c,b)}else{if(c==="JOD"||c=="KWD"||c=="BHD"){e=KTCurrency.convert(parseInt(jQuery(this).html().replace(/[^0-9]/g,""),10)/10,c,b)}
+          else{
+          if ((jQuery(this).html().indexOf(",") === -1) && (f.indexOf("\{\{amount_with_comma_separator}}")!==-1)){
+          e = KTCurrency.convert(parseInt((jQuery(this).html() + "00").replace(/[^0-9]/g, ""), 10), c, b);
+          }
+          else if ((jQuery(this).html().indexOf(".") === -1) && (f.indexOf("\{\{amount}}")!==-1)){
+          e = KTCurrency.convert(parseInt((jQuery(this).html() + "00").replace(/[^0-9]/g, ""), 10), c, b);
+          } else {
+          e = KTCurrency.convert(parseInt(jQuery(this).html().replace(/[^0-9]/g, ""), 10), c, b);
+          }
+          }}
+          if (b===shopCurrency) {
+          } else if (dropdown_CC_KT.CC_KT_Round==="gdecimal") {
+            e = Math.round(e/10)*10;
+          } else if (dropdown_CC_KT.CC_KT_Round==="adecimal") {
+            var last_digits = e%100;
+            var rval = Math.round(e/100);
+            if (last_digits==0){
+            } else if (last_digits<30){
+              e = rval*100 + dropdown_CC_KT.CC_KT_Round_Values[0];
+            } else if (last_digits<70) {
+              e = rval*100 + dropdown_CC_KT.CC_KT_Round_Values[1];
+            } else {
+              e = rval*100 + dropdown_CC_KT.CC_KT_Round_Values[2];
+            }
+          }
+          var h=KTCurrency.formatMoney(e,g);jQuery(this).html(h);jQuery(this).attr("data-currency-"+b,h)}jQuery(this).attr("data-currency",b)});this.currentCurrency=b;KTCurrency.lshandler("currency", b);};
+      
+        shopCurrency = '{{ shop.currency }}';
+        activeCurrency = '{{ cart.currency.iso_code }}';
+        cookieCurrency = KTCurrency.lshandler("currency");
+        shop_currency_format = {{ shop.money_format | strip_html | json }};
+        shop_currency_with_currency_format = {{ shop.money_with_currency_format | strip_html | json }};
+
+        if (typeof KTCurrency.moneyFormats != "undefined"){ 
+          dropdown_CC_KT.launcher(shopCurrency, cookieCurrency); 
+        } else { console.log("ktc - internal");}
+      }  
+  });
+</script>
